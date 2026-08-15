@@ -83,6 +83,9 @@ export type Project = {
   link?: string;
   linkLabel?: string;
   badge?: string;
+  thumbnail?: string;
+  media?: { type: "image" | "video"; url: string }[];
+  detailedDescription?: string;
 };
 
 export const projects: Project[] = [
@@ -95,6 +98,13 @@ export const projects: Project[] = [
     stack: ["Python", "FastAPI", "Ollama", "LLMs", "PDF generation"],
     link: "https://github.com/Amanhegde25/meeting-notes-ai",
     linkLabel: "GitHub ↗",
+    thumbnail: "/project-media/meeting-notes-ai.png",
+    media: [
+      { type: "image", url: "/project-media/meeting-notes-ai.png" },
+      { type: "image", url: "https://placehold.co/600x400/1e1e2e/a78bfa?text=Image+2" },
+      { type: "video", url: "https://www.w3schools.com/html/mov_bbb.mp4" }
+    ],
+    detailedDescription: "Meeting Notes AI is an offline-first desktop solution that leverages local Large Language Models (LLMs) via Ollama to transform raw, unstructured meeting transcripts into cleanly formatted PDF documents. Security and privacy are at its core—no data is sent to external APIs. The Python and FastAPI backend efficiently orchestrates document generation."
   },
   {
     title: "TheraMind",
@@ -258,6 +268,10 @@ export type Achievement = {
   badge: string;
   title: string;
   description: string;
+  thumbnail?: string;
+  media?: { type: "image" | "video"; url: string }[];
+  detailedDescription?: string;
+  link?: string;
 };
 
 export const achievements: Achievement[] = [
@@ -266,17 +280,20 @@ export const achievements: Achievement[] = [
     title: "Agentic AI Certified Foundations Associate",
     description:
       "Certified in agentic AI concepts, design patterns and tooling for building autonomous intelligent systems.",
+    media: [
+      { type: "image", url: "/Certifications-media/Oracle Agentic AI Certified Foundations Associate.png" }
+    ],
+    thumbnail: "/Certifications-media/Oracle Agentic AI Certified Foundations Associate.png",
   },
   {
     badge: "Oracle",
     title: "Cloud Infrastructure AI Foundations",
     description: "Foundations in Oracle Cloud AI services and infrastructure for deploying AI workloads.",
-  },
-  {
-    badge: "Academics",
-    title: `8.47 CGPA · B.Tech IT`,
-    description:
-      "Pursuing B.Tech in Information Technology at KJ Somaiya College of Engineering, Mumbai (2022–Present).",
+    media:[{
+      type:"image",
+      url:"/Certifications-media/Oracle Cloud Infrastructure Certified AI Foundations Associate.png"
+    }],
+    thumbnail:"/Certifications-media/Oracle Cloud Infrastructure Certified AI Foundations Associate.png",
   },
 ];
 
