@@ -14,6 +14,7 @@ export const profile = {
 };
 
 export const navLinks = [
+  { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
@@ -33,7 +34,7 @@ export const skillCategories: SkillCategory[] = [
     id: "frontend",
     label: "Frontend",
     heading: "Frontend",
-    chips: ["React.js", "Next.js", "React Native", "HTML5", "CSS3", "Tailwind CSS", "JavaScript (ES6+)"],
+    chips: ["React.js", "Next.js", "React Native", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
   },
   {
     id: "backend",
@@ -45,29 +46,13 @@ export const skillCategories: SkillCategory[] = [
     id: "mobile",
     label: "Mobile",
     heading: "Mobile Development",
-    chips: ["React Native", "Expo", "Android Studio"],
+    chips: ["Expo", "Android Studio"],
   },
   {
     id: "ai",
     label: "AI & ML",
     heading: "AI & Machine Learning",
-    chips: [
-      "LLMs",
-      "Generative AI",
-      "NLP",
-      "LangChain",
-      "AI Agents",
-      "Agentic AI",
-      "RAG",
-      "MCP",
-      "Hugging Face",
-      "Ollama",
-      "Prompt Engineering",
-      "spaCy",
-      "NLTK",
-      "Pandas",
-      "NumPy",
-    ],
+    chips: ["LLMs", "LangChain", "RAG", "AI Agents", "Hugging Face", "Ollama", "NLP", "Pandas", "NumPy"],
   },
   {
     id: "data",
@@ -79,23 +64,13 @@ export const skillCategories: SkillCategory[] = [
     id: "cloud",
     label: "Cloud & DevOps",
     heading: "Cloud & DevOps",
-    chips: ["AWS", "Git", "GitHub", "Postman", "HTTPie"],
+    chips: ["AWS", "Git", "GitHub"],
   },
   {
     id: "other",
     label: "Other",
     heading: "Tools & Automation",
-    chips: [
-      "Figma",
-      "Adobe XD",
-      "Canva",
-      "Power Apps",
-      "Power Automate",
-      "AutoCAD",
-      "TinkerCAD",
-      "Arduino C",
-      "MS Excel / PPT / Word",
-    ],
+    chips: ["Figma", "Power Apps", "Power Automate", "Arduino C"],
   },
 ];
 
@@ -191,26 +166,26 @@ export const projects: Project[] = [
     link: "https://github.com/Amanhegde25/Cricket_DataAnalysis",
     linkLabel: "GitHub ↗",
   },
-  {
-    title: "MED-TRACKER",
-    emoji: "💊",
-    tags: "React · JavaScript",
-    description:
-      "Simple React app to help you keep track of your medications — built with Create React App.",
-    stack: ["React.js", "Create React App", "JavaScript"],
-    link: "https://github.com/Amanhegde25/MED-TRACKER",
-    linkLabel: "GitHub ↗",
-  },
-  {
-    title: "Avinex",
-    emoji: "🌐",
-    tags: "PHP · MySQL",
-    description:
-      "PHP web application with dynamic pages, user authentication and shared components (header, navbar, database layer), backed by a MySQL schema.",
-    stack: ["PHP", "MySQL", "HTML/CSS/JS"],
-    link: "https://github.com/Amanhegde25/Avinex",
-    linkLabel: "GitHub ↗",
-  },
+  // {
+  //   title: "MED-TRACKER",
+  //   emoji: "💊",
+  //   tags: "React · JavaScript",
+  //   description:
+  //     "Simple React app to help you keep track of your medications — built with Create React App.",
+  //   stack: ["React.js", "Create React App", "JavaScript"],
+  //   link: "https://github.com/Amanhegde25/MED-TRACKER",
+  //   linkLabel: "GitHub ↗",
+  // },
+  // {
+  //   title: "Avinex",
+  //   emoji: "🌐",
+  //   tags: "PHP · MySQL",
+  //   description:
+  //     "PHP web application with dynamic pages, user authentication and shared components (header, navbar, database layer), backed by a MySQL schema.",
+  //   stack: ["PHP", "MySQL", "HTML/CSS/JS"],
+  //   link: "https://github.com/Amanhegde25/Avinex",
+  //   linkLabel: "GitHub ↗",
+  // },
   {
     title: "Message App",
     emoji: "💬",

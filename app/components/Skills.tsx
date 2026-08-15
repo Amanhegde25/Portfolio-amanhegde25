@@ -4,24 +4,23 @@ import { useState } from "react";
 import { skillCategories } from "@/lib/data";
 import Reveal from "./Reveal";
 import {
-  SiReact, SiNextdotjs, SiHtml5, SiCss, SiTailwindcss, SiJavascript,
+  SiReact, SiNextdotjs, SiTypescript, SiHtml5, SiCss, SiTailwindcss, SiJavascript,
   SiNodedotjs, SiExpress, SiFlask, SiLaravel, SiPhp, SiJsonwebtokens, SiAuth0,
   SiExpo, SiAndroidstudio, SiMongodb, SiPostgresql, SiMysql, SiRedis,
-  SiGit, SiGithub, SiPostman, SiFigma, SiCanvas,
-  SiAutocad, SiArduino, SiNumpy, SiPandas, SiHuggingface, SiOllama,
-  SiLangchain, SiSpacy
+  SiGit, SiGithub, SiFigma, SiArduino, SiNumpy, SiPandas, SiHuggingface, SiOllama, SiLangchain
 } from "react-icons/si";
-import { TbApi, TbBrain } from "react-icons/tb";
-import { FaAws, FaRobot, FaNetworkWired, FaMicrosoft, FaTerminal, FaCode } from "react-icons/fa";
+import { TbApi } from "react-icons/tb";
+import { FaAws, FaRobot, FaNetworkWired, FaMicrosoft, FaCode } from "react-icons/fa";
 
 const iconMap: Record<string, React.ElementType> = {
   "React.js": SiReact,
   "Next.js": SiNextdotjs,
   "React Native": SiReact,
+  "TypeScript": SiTypescript,
+  "JavaScript": SiJavascript,
   "HTML5": SiHtml5,
   "CSS3": SiCss,
   "Tailwind CSS": SiTailwindcss,
-  "JavaScript (ES6+)": SiJavascript,
   "Node.js": SiNodedotjs,
   "Express.js": SiExpress,
   "Flask": SiFlask,
@@ -33,18 +32,12 @@ const iconMap: Record<string, React.ElementType> = {
   "Expo": SiExpo,
   "Android Studio": SiAndroidstudio,
   "LLMs": FaRobot,
-  "Generative AI": TbBrain,
-  "NLP": FaNetworkWired,
   "LangChain": SiLangchain,
-  "AI Agents": FaRobot,
-  "Agentic AI": FaRobot,
   "RAG": FaNetworkWired,
-  "MCP": FaNetworkWired,
+  "AI Agents": FaRobot,
   "Hugging Face": SiHuggingface,
   "Ollama": SiOllama,
-  "Prompt Engineering": TbBrain,
-  "spaCy": SiSpacy,
-  "NLTK": FaNetworkWired,
+  "NLP": FaNetworkWired,
   "Pandas": SiPandas,
   "NumPy": SiNumpy,
   "MongoDB": SiMongodb,
@@ -54,26 +47,21 @@ const iconMap: Record<string, React.ElementType> = {
   "AWS": FaAws,
   "Git": SiGit,
   "GitHub": SiGithub,
-  "Postman": SiPostman,
-  "HTTPie": FaTerminal,
   "Figma": SiFigma,
-  "Canva": SiCanvas,
   "Power Apps": FaMicrosoft,
   "Power Automate": FaMicrosoft,
-  "AutoCAD": SiAutocad,
-  "TinkerCAD": SiAutocad,
   "Arduino C": SiArduino,
-  "MS Excel / PPT / Word": FaMicrosoft,
 };
 
 const brandColors: Record<string, string> = {
   "React.js": "#61DAFB",
   "Next.js": "#FFFFFF",
   "React Native": "#61DAFB",
+  "TypeScript": "#3178C6",
+  "JavaScript": "#F7DF1E",
   "HTML5": "#E34F26",
   "CSS3": "#1572B6",
   "Tailwind CSS": "#06B6D4",
-  "JavaScript (ES6+)": "#F7DF1E",
   "Node.js": "#5FA04E",
   "Express.js": "#FFFFFF",
   "Flask": "#FFFFFF",
@@ -85,18 +73,12 @@ const brandColors: Record<string, string> = {
   "Expo": "#4630EB",
   "Android Studio": "#3DDC84",
   "LLMs": "#A855F7",
-  "Generative AI": "#A855F7",
-  "NLP": "#10B981",
   "LangChain": "#65D6AD",
-  "AI Agents": "#A855F7",
-  "Agentic AI": "#A855F7",
   "RAG": "#10B981",
-  "MCP": "#10B981",
+  "AI Agents": "#A855F7",
   "Hugging Face": "#FFD21E",
   "Ollama": "#FFFFFF",
-  "Prompt Engineering": "#A855F7",
-  "spaCy": "#09A3D5",
-  "NLTK": "#10B981",
+  "NLP": "#10B981",
   "Pandas": "#E70488",
   "NumPy": "#4DABCF",
   "MongoDB": "#47A248",
@@ -106,21 +88,16 @@ const brandColors: Record<string, string> = {
   "AWS": "#FF9900",
   "Git": "#F05032",
   "GitHub": "#FFFFFF",
-  "Postman": "#FF6C37",
-  "HTTPie": "#73DC8C",
   "Figma": "#F24E1E",
-  "Canva": "#00C4CC",
   "Power Apps": "#742774",
   "Power Automate": "#0066FF",
-  "AutoCAD": "#E51937",
-  "TinkerCAD": "#E51937",
   "Arduino C": "#00878F",
-  "MS Excel / PPT / Word": "#D83B01",
 };
 
 export default function Skills() {
   const [active, setActive] = useState<string | null>(null);
   const [hoveredCat, setHoveredCat] = useState<string | null>(null);
+  const [hoveredChip, setHoveredChip] = useState<string | null>(null);
   const activeChips = active
     ? (skillCategories.find((c) => c.id === active)?.chips ?? [])
     : [];
@@ -135,9 +112,9 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-pad">
-      <div className="mx-auto max-w-6xl px-6 flex flex-col lg:flex-row gap-12 lg:gap-24">
+      <div className="mx-auto max-w-[1400px] px-6 flex flex-col lg:flex-row gap-12 lg:gap-16">
         {/* Left Column */}
-        <div className="lg:w-[35%] flex flex-col gap-12">
+        <div className="lg:w-[32%] lg:min-w-0 flex flex-col gap-12">
           <div>
             <Reveal>
               <h2 className="text-3xl md:text-[40px] font-bold tracking-tight mb-8">My Skills</h2>
@@ -162,15 +139,15 @@ export default function Skills() {
         </div>
         
         {/* Right Column */}
-        <div className="lg:w-[65%] flex flex-col gap-10">
+        <div className="lg:flex-1 lg:min-w-0 flex flex-col gap-10">
           <Reveal>
-            <p className="text-muted-foreground/90 leading-relaxed text-[15px] md:text-[17px] font-medium">
-              My go-to stack is Next JS (With TypeScript & SaSS), which was previously known as the MERN Stack for web-based solutions. I have collaborated with developers to create a variety of open-source solutions.
+            <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium">
+              My go-to stack is Next.js + TypeScript + Tailwind, built on a strong MERN foundation, with React Native for mobile, AWS for deployment and an AI toolkit (LLMs, RAG, LangChain) close at hand.
             </p>
           </Reveal>
           <Reveal>
-            <p className="text-muted-foreground/90 leading-relaxed text-[15px] md:text-[17px] font-medium mt-[-16px]">
-              I have a thing for making unique user interfaces, so I always design the systems on Figma from scratch and code them using tailwind (did previously using Sass), giving the app a unique new look and better control and customizability.
+            <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium mt-[-16px]">
+              I design unique UIs in Figma and build them with Tailwind, and I&apos;ve shipped AI projects like an LLM statement parser, an NLP chatbot and a face-recognition attendance system — certified in Oracle Agentic AI &amp; OCI AI Foundations.
             </p>
           </Reveal>
 
@@ -208,36 +185,38 @@ export default function Skills() {
           </div>
 
           <Reveal>
-             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-4">
+             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-5 gap-x-4">
                {allChips.map(chip => {
                  const isActive = activeChips.includes(chip);
                  const isTabHovered = hoveredChips.includes(chip);
+                 const isChipHovered = hoveredChip === chip;
                  const Icon = iconMap[chip] || FaCode;
                  const color = brandColors[chip] || "#a78bfa";
 
-                 // Determine inline style: tab hover = white glow, no tab hover = nothing (CSS group-hover handles brand color)
-                 const inlineStyle: React.CSSProperties | undefined = isTabHovered
-                   ? { color: "#ffffff", opacity: 1, filter: "none" }
-                   : undefined;
+                 // Chip hover shows its unique brand colour; tab hover glows the category white
+                 const inlineStyle: React.CSSProperties | undefined = isChipHovered
+                   ? { color, opacity: 1, filter: "none" }
+                   : isTabHovered
+                     ? { color: "#ffffff", opacity: 1, filter: "none" }
+                     : undefined;
 
                  return (
                    <div 
                      key={chip}
-                     className={`group flex items-center gap-3 cursor-default transition-all duration-300 ${
+                     onMouseEnter={() => setHoveredChip(chip)}
+                     onMouseLeave={() => setHoveredChip(null)}
+                     className={`flex items-center gap-2.5 min-w-0 cursor-default transition-all duration-300 ${
                        active === null
                          ? "text-muted-foreground opacity-70"
                          : isActive ? "text-foreground opacity-100" : "text-muted-foreground opacity-30 grayscale"
-                     } hover:!opacity-100 hover:!grayscale-0`}
-                     style={{
-                       "--brand-color": color,
-                       ...(inlineStyle ?? {}),
-                     } as React.CSSProperties}
+                     }`}
+                     style={inlineStyle}
                    >
-                     <div className="flex items-center justify-center w-5 h-5 transition-colors duration-300 group-hover:text-[var(--brand-color)]">
-                       <Icon className="text-xl" />
+                     <div className="flex items-center justify-center w-5 h-5 transition-colors duration-300 shrink-0">
+                       <Icon className="text-lg" />
                      </div>
                      <span 
-                       className={`text-[15px] transition-colors duration-300 group-hover:text-[var(--brand-color)] ${
+                       className={`text-sm leading-snug transition-colors duration-300 ${
                          isActive ? "font-bold" : "font-semibold"
                        }`}
                      >

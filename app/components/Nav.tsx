@@ -20,7 +20,7 @@ export default function Nav() {
         scrolled ? "shadow-[0_10px_30px_rgba(0,0,0,0.35)]" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3.5">
         <a href="#home" className="flex items-center gap-2.5 font-bold tracking-tight">
           <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 font-mono text-sm text-white">
             A

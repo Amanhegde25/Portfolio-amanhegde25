@@ -2,13 +2,15 @@
 
 import { useState, type FormEvent } from "react";
 import { profile } from "@/lib/data";
+import { FaGithub, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import Reveal from "./Reveal";
 
 const contactLinks = [
-  { icon: "✉", label: profile.email, href: `mailto:${profile.email}` },
-  { icon: "☎", label: profile.phone, href: `tel:${profile.phoneRaw}` },
-  { icon: "⌥", label: profile.githubHandle, href: profile.github },
-  { icon: "in", label: profile.linkedinHandle, href: profile.linkedin },
+  { icon: SiGmail, label: profile.email, href: `mailto:${profile.email}` },
+  { icon: FaPhoneAlt, label: profile.phone, href: `tel:${profile.phoneRaw}` },
+  { icon: FaGithub, label: profile.githubHandle, href: profile.github },
+  { icon: FaLinkedinIn, label: profile.linkedinHandle, href: profile.linkedin },
 ];
 
 export default function Contact() {
@@ -76,20 +78,23 @@ export default function Contact() {
               </p>
 
               <div className="mt-8 grid gap-3.5">
-                {contactLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group flex items-center gap-3 text-muted transition hover:translate-x-1 hover:text-foreground"
-                  >
-                    <span className="grid h-9 w-9 place-items-center rounded-[10px] border border-borderline bg-card text-sm text-accent">
-                      {link.icon}
-                    </span>
-                    {link.label}
-                  </a>
-                ))}
+                {contactLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="group flex items-center gap-3 text-muted transition hover:translate-x-1 hover:text-foreground"
+                    >
+                      <span className="grid h-9 w-9 place-items-center rounded-[10px] border border-borderline bg-card text-sm text-accent transition-colors group-hover:text-foreground">
+                        <Icon aria-hidden="true" />
+                      </span>
+                      {link.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </Reveal>

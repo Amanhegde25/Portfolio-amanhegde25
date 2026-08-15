@@ -5,7 +5,7 @@ import Reveal from "./Reveal";
 export default function Achievements() {
   return (
     <section id="achievements" className="section-pad bg-background-soft">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <SectionHeading
             tag="Achievements"

@@ -10,7 +10,7 @@ const socials = [
 export default function About() {
   return (
     <section id="about" className="section-pad bg-background-soft">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <div className="mb-14 max-w-2xl">
             <span className="mb-3.5 inline-block font-mono text-sm uppercase tracking-[0.08em] text-accent">
