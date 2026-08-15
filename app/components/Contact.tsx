@@ -1,0 +1,159 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
+import { profile } from "@/lib/data";
+import Reveal from "./Reveal";
+
+const contactLinks = [
+  { icon: "✉", label: profile.email, href: `mailto:${profile.email}` },
+  { icon: "☎", label: profile.phone, href: `tel:${profile.phoneRaw}` },
+  { icon: "⌥", label: profile.githubHandle, href: profile.github },
+  { icon: "in", label: profile.linkedinHandle, href: profile.linkedin },
+];
+
+export default function Contact() {
+  const [status, setStatus] = useState<{ text: string; error?: boolean } | null>(null);
+  const [sending, setSending] = useState(false);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    if (!name || !email || !message) {
+      setStatus({ text: "Please fill in all the fields.", error: true });
+      return;
+    }
+
+    setSending(true);
+    setStatus(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus({ text: "Message sent — thanks for reaching out!" });
+        form.reset();
+      } else {
+        setStatus({ text: data.error ?? "Something went wrong. Please try again.", error: true });
+      }
+    } catch {
+      setStatus({ text: "Network error. Please try again.", error: true });
+    } finally {
+      setSending(false);
+    }
+  }
+
+  return (
+    <section id="contact" className="section-pad bg-background-soft">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid items-start gap-14 md:grid-cols-2">
+          <Reveal>
+            <div>
+              <span className="mb-3.5 inline-block font-mono text-sm uppercase tracking-[0.08em] text-accent">
+                Contact
+              </span>
+              <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-5xl">
+                It&apos;s time
+                <br />
+                to <span className="grad-text">talk!</span>
+              </h2>
+              <p className="mt-5 max-w-md text-muted">
+                Best way to reach me is{" "}
+                <a href={`mailto:${profile.email}`} className="font-semibold text-accent">
+                  {profile.email}
+                </a>{" "}
+                or just fill out the form. I love talking to new people and making new connections.
+              </p>
+
+              <div className="mt-8 grid gap-3.5">
+                {contactLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="group flex items-center gap-3 text-muted transition hover:translate-x-1 hover:text-foreground"
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-[10px] border border-borderline bg-card text-sm text-accent">
+                      {link.icon}
+                    </span>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <form
+              onSubmit={handleSubmit}
+              className="grid gap-5 rounded-2xl border border-borderline bg-card p-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
+            >
+              <div>
+                <label htmlFor="name" className="mb-2 block text-sm font-semibold text-muted">
+                  Your Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="John Doe"
+                  className="w-full rounded-xl border border-borderline bg-background px-4 py-3 text-[15px] text-foreground outline-none transition placeholder:text-faint focus:border-accent focus:ring-[3px] focus:ring-accent/15"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="mb-2 block text-sm font-semibold text-muted">
+                  Your Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="john@example.com"
+                  className="w-full rounded-xl border border-borderline bg-background px-4 py-3 text-[15px] text-foreground outline-none transition placeholder:text-faint focus:border-accent focus:ring-[3px] focus:ring-accent/15"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="mb-2 block text-sm font-semibold text-muted">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  placeholder="Hi Aman, I'd love to talk about..."
+                  className="w-full resize-y rounded-xl border border-borderline bg-background px-4 py-3 text-[15px] text-foreground outline-none transition placeholder:text-faint focus:border-accent focus:ring-[3px] focus:ring-accent/15"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={sending}
+                className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-7 py-3.5 font-semibold text-white shadow-[0_10px_30px_rgba(147,51,234,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(147,51,234,0.5)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+              >
+                {sending ? "Sending…" : "Send Message"}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M1 8h13m0 0L9 3m5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              {status ? (
+                <p className={`min-h-[1.4em] text-sm ${status.error ? "text-red-400" : "text-emerald-400"}`} role="status">
+                  {status.text}
+                </p>
+              ) : null}
+            </form>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
