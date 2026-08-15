@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aman Arun Hegde — Portfolio
+
+A modern, dark-themed portfolio for **Aman Arun Hegde** (Full Stack Developer & AI Enthusiast), built with Next.js 16 (App Router), TypeScript, Tailwind CSS v4 and React 19.
+
+Live sections: Hero · About · Skills · Projects · Experience · Achievements · Contact.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Icons:** react-icons
+- **Fonts:** Inter & JetBrains Mono via `next/font`
+- **Email:** Nodemailer (Gmail SMTP)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- npm
+
+### Install & run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command          | Description                       |
+| ---------------- | --------------------------------- |
+| `npm run dev`    | Start the development server      |
+| `npm run build`  | Create a production build         |
+| `npm run start`  | Start the production server       |
+| `npm run lint`   | Run ESLint (Next 16 removed `next lint`) |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  api/contact/route.ts   # POST endpoint that emails contact form submissions
+  components/            # Nav, Hero, About, Skills, Projects, Experience,
+                         # Achievements, Contact, Footer, SectionHeading, Reveal
+  globals.css            # Tailwind v4 theme tokens & custom utilities
+  layout.tsx             # Root layout, fonts, metadata
+  page.tsx               # Composes all sections
+lib/
+  data.ts                # All portfolio content (profile, skills, projects, experience…)
+public/                  # Static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All portfolio content lives in `lib/data.ts` — edit it to update text without touching components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact Form
 
-## Deploy on Vercel
+The form posts to `/api/contact`, which sends the message to your inbox (and CCs the sender) via Gmail SMTP using Nodemailer.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Enable **2-Step Verification** on the Google account that will send emails.
+2. Generate an App Password at https://myaccount.google.com/apppasswords.
+3. Copy `.env.example` to `.env.local` and fill in your values:
+
+```
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your-gmail@gmail.com
+SMTP_PASS=your-16-char-app-password
+CONTACT_TO=your-gmail@gmail.com
+```
+
+`.env.local` is gitignored — never commit your credentials.
+
+## Deploy
+
+The easiest way to deploy is the [Vercel Platform](https://vercel.com/new). Set the same environment variables (`.env.local`) in your Vercel project settings.
