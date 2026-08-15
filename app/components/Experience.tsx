@@ -1,4 +1,4 @@
-import { experiences } from "@/lib/data";
+import { experiences, siteTheme } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
@@ -11,7 +11,7 @@ export default function Experience() {
             tag="Work Experience"
             title={
               <>
-                Where I&apos;ve <span className="grad-text">worked &amp; grown</span>
+                Where I&apos;ve <span className={siteTheme.textGradient}>worked &amp; grown</span>
               </>
             }
           />
@@ -20,7 +20,7 @@ export default function Experience() {
         <div className="relative pl-9">
           <div
             aria-hidden="true"
-            className="absolute bottom-2 left-[9px] top-2 w-0.5 bg-gradient-to-b from-indigo-400 to-fuchsia-500 to-transparent"
+            className={`absolute bottom-2 left-[9px] top-2 w-0.5 ${siteTheme.timelineGradient}`}
           />
           <ol className="space-y-7">
             {experiences.map((job) => (

@@ -5,6 +5,7 @@ import { profile } from "@/lib/data";
 import { FaGithub, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import Reveal from "./Reveal";
+import { siteTheme } from "@/lib/data";
 
 const contactLinks = [
   { icon: SiGmail, label: profile.email, href: `mailto:${profile.email}` },
@@ -58,23 +59,18 @@ export default function Contact() {
   return (
     <section id="contact" className="section-pad bg-background-soft">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid items-start gap-14 md:grid-cols-2">
+        <div className="grid items-center gap-14 md:grid-cols-2">
           <Reveal>
             <div>
               <span className="mb-3.5 inline-block font-mono text-sm uppercase tracking-[0.08em] text-accent">
                 Contact
               </span>
               <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-5xl">
-                It&apos;s time
-                <br />
-                to <span className="grad-text">talk!</span>
+                Let&apos;s
+                <span className={siteTheme.textGradient}> Connect</span>
               </h2>
               <p className="mt-5 max-w-md text-muted">
-                Best way to reach me is{" "}
-                <a href={`mailto:${profile.email}`} className="font-semibold text-accent">
-                  {profile.email}
-                </a>{" "}
-                or just fill out the form. I love talking to new people and making new connections.
+                Have a question or want to work together? Drop a message here.
               </p>
 
               <div className="mt-8 grid gap-3.5">
@@ -112,7 +108,7 @@ export default function Contact() {
                   id="name"
                   name="name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Your Name"
                   className="w-full rounded-xl border border-borderline bg-background px-4 py-3 text-[15px] text-foreground outline-none transition placeholder:text-faint focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                 />
               </div>
@@ -124,7 +120,7 @@ export default function Contact() {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="Your Email"
                   className="w-full rounded-xl border border-borderline bg-background px-4 py-3 text-[15px] text-foreground outline-none transition placeholder:text-faint focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                 />
               </div>
@@ -136,14 +132,14 @@ export default function Contact() {
                   id="message"
                   name="message"
                   rows={5}
-                  placeholder="Hi Aman, I'd love to talk about..."
+                  placeholder="Your Message"
                   className="w-full resize-y rounded-xl border border-borderline bg-background px-4 py-3 text-[15px] text-foreground outline-none transition placeholder:text-faint focus:border-accent focus:ring-[3px] focus:ring-accent/15"
                 />
               </div>
               <button
                 type="submit"
                 disabled={sending}
-                className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-7 py-3.5 font-semibold text-white shadow-[0_10px_30px_rgba(147,51,234,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(147,51,234,0.5)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                className={`inline-flex w-full items-center justify-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-7 py-3.5 font-semibold text-white ${siteTheme.activeShadow} transition disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0`}
               >
                 {sending ? "Sending…" : "Send Message"}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Project } from "@/lib/data";
+import { Project, siteTheme } from "@/lib/data";
 import { FaTimes, FaChevronLeft, FaChevronRight, FaGithub } from "react-icons/fa";
 
 interface ProjectModalProps {
@@ -141,7 +141,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               )}
             </>
           ) : (
-            <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-indigo-500/10 to-fuchsia-500/10">
+            <div className={`flex h-full w-full flex-col items-center justify-center ${siteTheme.cardGradient}`}>
               <span className="text-7xl opacity-50 mb-4">{project.emoji}</span>
               <span className="text-muted/50 text-sm font-medium">No media available</span>
             </div>
@@ -189,7 +189,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(147,51,234,0.3)]"
+                className={`inline-flex w-full items-center justify-center gap-2 rounded-xl ${siteTheme.activeGradient} px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] ${siteTheme.activeShadow}`}
               >
                 <FaGithub className="text-lg" />
                 View Source on GitHub

@@ -1,4 +1,4 @@
-import { aboutFacts, profile } from "@/lib/data";
+import { aboutFacts, profile, siteTheme } from "@/lib/data";
 import Reveal from "./Reveal";
 
 const socials = [
@@ -18,7 +18,7 @@ export default function About() {
             </span>
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight md:text-4xl">
               My approach to work is{" "}
-              <span className="grad-text">logic, consistency, and rationality</span>
+              <span className={siteTheme.textGradient}>logic, consistency, and rationality</span>
             </h2>
           </div>
         </Reveal>

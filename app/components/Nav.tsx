@@ -1,17 +1,42 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { navLinks } from "@/lib/data";
+import { navLinks, siteTheme } from "@/lib/data";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+      
+      let current = "";
+      const sections = navLinks.map(link => link.href.substring(1));
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Select section if its top is above 1/3rd of the viewport
+          if (rect.top <= window.innerHeight / 3) {
+            current = `#${section}`;
+          }
+        }
+      }
+      
+      // If we are near the bottom of the page, select the last section
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+        current = navLinks[navLinks.length - 1].href;
+      }
+      
+      setActiveSection(current);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -22,10 +47,10 @@ export default function Nav() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3.5">
         <a href="#home" className="flex items-center gap-2.5 font-bold tracking-tight">
-          <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-indigo-500 to-fuchsia-500 font-mono text-sm text-white">
+          <span className={`grid h-7 w-7 place-items-center rounded-lg ${siteTheme.activeGradient} font-mono text-sm text-white`}>
             A
           </span>
-          <span>aman.hegde</span>
+          <span>Aman Arun Hegde</span>
         </a>
 
         <nav
@@ -34,13 +59,15 @@ export default function Nav() {
           }`}
           aria-label="Main navigation"
         >
-          {navLinks.map((link) =>
-            link.cta ? (
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href;
+            
+            return link.cta ? (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-5 py-2 text-sm font-semibold text-white"
+                className={`rounded-full ${siteTheme.activeGradient} px-5 py-2 text-sm font-semibold text-white`}
               >
                 {link.label}
               </a>
@@ -49,12 +76,17 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+                className={`relative text-sm font-medium transition-colors hover:text-foreground ${
+                  isActive ? "text-foreground" : "text-muted"
+                }`}
               >
                 {link.label}
+                {isActive && (
+                  <span className={`absolute -bottom-1.5 left-1/2 h-[2px] w-1/2 -translate-x-1/2 ${siteTheme.activeGradient} rounded-full`} />
+                )}
               </a>
-            )
-          )}
+            );
+          })}
         </nav>
 
         <button

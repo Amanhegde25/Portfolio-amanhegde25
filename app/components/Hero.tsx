@@ -1,4 +1,4 @@
-import { profile } from "@/lib/data";
+import { profile, siteTheme } from "@/lib/data";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
@@ -7,8 +7,8 @@ export default function Hero() {
     <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pb-8 pt-20">
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="grid-overlay absolute inset-0" />
-        <div className="blob -right-32 -top-32 h-[520px] w-[520px] bg-indigo-600" />
-        <div className="blob -bottom-36 -left-36 h-[460px] w-[460px] bg-fuchsia-700 [animation-delay:-6s]" />
+        <div className={`blob -right-32 -top-32 h-[520px] w-[520px] ${siteTheme.blob1}`} />
+        <div className={`blob -bottom-36 -left-36 h-[460px] w-[460px] ${siteTheme.blob2} [animation-delay:-6s]`} />
       </div>
 
       <div className="mx-auto max-w-4xl text-center">
@@ -17,7 +17,7 @@ export default function Hero() {
         </p>
 
         <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl">
-          I build <span className="grad-text">intelligent, full-stack</span>
+          I build <span className={siteTheme.textGradient}>intelligent, full-stack</span>
           <br />
           applications for the real world
         </h1>
@@ -31,7 +31,7 @@ export default function Hero() {
         <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-7 py-3.5 font-semibold text-white shadow-[0_10px_30px_rgba(147,51,234,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(147,51,234,0.5)]"
+            className={`inline-flex items-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-7 py-3.5 font-semibold text-white ${siteTheme.activeShadow} transition`}
           >
             See Projects
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

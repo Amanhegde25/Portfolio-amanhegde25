@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { achievements, type Achievement } from "@/lib/data";
+import { achievements, siteTheme, type Achievement } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import AchievementModal from "./AchievementModal";
@@ -17,7 +17,7 @@ export default function Achievements() {
             tag="Achievements"
             title={
               <>
-                Certifications &amp; <span className="grad-text">highlights</span>
+                Certifications &amp; <span className={siteTheme.textGradient}>highlights</span>
               </>
             }
           />

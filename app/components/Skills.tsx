@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { skillCategories } from "@/lib/data";
+import { skillCategories, siteTheme } from "@/lib/data";
 import Reveal from "./Reveal";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiHtml5, SiCss, SiTailwindcss, SiJavascript,
@@ -112,121 +112,121 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-pad">
-      <div className="mx-auto max-w-[1400px] px-6 flex flex-col lg:flex-row gap-12 lg:gap-16">
-        {/* Left Column */}
-        <div className="lg:w-[32%] lg:min-w-0 flex flex-col gap-12">
-          <div>
-            <Reveal>
-              <h2 className="text-3xl md:text-[40px] font-bold tracking-tight mb-8">My Skills</h2>
-            </Reveal>
-            <Reveal>
-              <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-2">I build things for the people</h3>
-              <p className="text-lg italic text-muted-foreground font-serif">I can Design, Develop, Deploy</p>
-            </Reveal>
+      <div className="mx-auto max-w-[1400px] px-6 flex flex-col">
+        
+        {/* Top Text Section */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+          <div className="lg:w-[32%] lg:min-w-0 flex flex-col gap-12">
+            <div>
+              <Reveal>
+                <h3 className="text-3xl md:text-[40px] font-bold tracking-tight mb-8">My Skills</h3>
+              </Reveal>
+              <Reveal>
+                <h4 className="text-xl md:text-2xl font-bold tracking-tight mb-2">I build things for the people</h4>
+                <p className="text-lg italic text-muted-foreground font-serif">I can Design, Develop, Deploy</p>
+              </Reveal>
+            </div>
           </div>
-          <div className="hidden lg:flex flex-col gap-8 mt-4">
-             <Reveal>
-               <div className="font-bold text-lg flex items-center gap-4">
-                 Skills <span className="text-muted-foreground/50">→</span>
-               </div>
-             </Reveal>
-             <Reveal>
-               <div className="font-bold text-lg flex items-center gap-4 mt-20">
-                 Work Stack <span className="text-muted-foreground/50">→</span>
-               </div>
-             </Reveal>
+          
+          <div className="lg:flex-1 lg:min-w-0 flex flex-col gap-10">
+            <Reveal>
+              <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium">
+                My go-to stack is Next.js + TypeScript + Tailwind, built on a strong MERN foundation, with React Native for mobile, AWS for deployment and an AI toolkit (LLMs, RAG, LangChain) close at hand.
+              </p>
+            </Reveal>
+            <Reveal>
+              <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium mt-[-16px]">
+                I design unique UIs in Figma and build them with Tailwind, and I&apos;ve shipped AI projects like an LLM statement parser, an NLP chatbot and a face-recognition attendance system — certified in Oracle Agentic AI &amp; OCI AI Foundations.
+              </p>
+            </Reveal>
           </div>
         </div>
-        
-        {/* Right Column */}
-        <div className="lg:flex-1 lg:min-w-0 flex flex-col gap-10">
-          <Reveal>
-            <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium">
-              My go-to stack is Next.js + TypeScript + Tailwind, built on a strong MERN foundation, with React Native for mobile, AWS for deployment and an AI toolkit (LLMs, RAG, LangChain) close at hand.
-            </p>
-          </Reveal>
-          <Reveal>
-            <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium mt-[-16px]">
-              I design unique UIs in Figma and build them with Tailwind, and I&apos;ve shipped AI projects like an LLM statement parser, an NLP chatbot and a face-recognition attendance system — certified in Oracle Agentic AI &amp; OCI AI Foundations.
-            </p>
-          </Reveal>
 
-          {/* Mobile Labels (Hidden on lg+) */}
-          <div className="font-bold text-lg flex items-center gap-4 lg:hidden mt-4">
-            Skills <span className="text-muted-foreground/50">→</span>
-          </div>
-
-          <Reveal>
-            <div className="flex flex-wrap gap-2.5" role="tablist" aria-label="Skill categories">
-              {skillCategories.map((cat) => (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={active === cat.id}
-                  onClick={() => setActive(prev => prev === cat.id ? null : cat.id)}
-                  onMouseEnter={() => setHoveredCat(cat.id)}
-                  onMouseLeave={() => setHoveredCat(null)}
-                  className={`rounded-[10px] px-5 py-2 text-sm font-medium transition duration-300 ${
-                    active === cat.id
-                      ? "bg-gradient-to-r from-fuchsia-500 to-indigo-500 text-white shadow-lg"
-                      : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* Mobile Labels (Hidden on lg+) */}
-          <div className="font-bold text-lg flex items-center gap-4 lg:hidden mt-4">
-            Work Stack <span className="text-muted-foreground/50">→</span>
-          </div>
-
-          <Reveal>
-             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-5 gap-x-4">
-               {allChips.map(chip => {
-                 const isActive = activeChips.includes(chip);
-                 const isTabHovered = hoveredChips.includes(chip);
-                 const isChipHovered = hoveredChip === chip;
-                 const Icon = iconMap[chip] || FaCode;
-                 const color = brandColors[chip] || "#a78bfa";
-
-                 // Chip hover shows its unique brand colour; tab hover glows the category white
-                 const inlineStyle: React.CSSProperties | undefined = isChipHovered
-                   ? { color, opacity: 1, filter: "none" }
-                   : isTabHovered
-                     ? { color: "#ffffff", opacity: 1, filter: "none" }
-                     : undefined;
-
-                 return (
-                   <div 
-                     key={chip}
-                     onMouseEnter={() => setHoveredChip(chip)}
-                     onMouseLeave={() => setHoveredChip(null)}
-                     className={`flex items-center gap-2.5 min-w-0 cursor-default transition-all duration-300 ${
-                       active === null
-                         ? "text-muted-foreground opacity-70"
-                         : isActive ? "text-foreground opacity-100" : "text-muted-foreground opacity-30 grayscale"
-                     }`}
-                     style={inlineStyle}
-                   >
-                     <div className="flex items-center justify-center w-5 h-5 transition-colors duration-300 shrink-0">
-                       <Icon className="text-lg" />
-                     </div>
-                     <span 
-                       className={`text-sm leading-snug transition-colors duration-300 ${
-                         isActive ? "font-bold" : "font-semibold"
-                       }`}
-                     >
-                       {chip}
-                     </span>
-                   </div>
-                 );
-               })}
+        {/* Skills Tabs Section */}
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 mt-6 lg:mt-6">
+          <div className="lg:w-[32%] lg:min-w-0">
+             <div className="font-bold text-lg flex items-center lg:items-start gap-4 lg:mt-2">
+               Skills <span className="text-muted-foreground/50">→</span>
              </div>
-          </Reveal>
+          </div>
+          <div className="lg:flex-1 lg:min-w-0">
+            <Reveal>
+              <div className="flex flex-wrap gap-2.5" role="tablist" aria-label="Skill categories">
+                {skillCategories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={active === cat.id}
+                    onClick={() => setActive(prev => prev === cat.id ? null : cat.id)}
+                    onMouseEnter={() => setHoveredCat(cat.id)}
+                    onMouseLeave={() => setHoveredCat(null)}
+                    className={`rounded-[10px] px-5 py-2 text-sm font-medium transition duration-300 ${
+                      active === cat.id
+                        ? `${siteTheme.activeGradientReversed} text-white shadow-lg`
+                        : "bg-background-soft text-muted hover:bg-card hover:text-foreground"
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Work Stack Grid Section */}
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 mt-10 lg:mt-10">
+          <div className="lg:w-[32%] lg:min-w-0">
+             <div className="font-bold text-lg flex items-center lg:items-start gap-4 lg:mt-2">
+               Work Stack <span className="text-muted-foreground/50">→</span>
+             </div>
+          </div>
+          <div className="lg:flex-1 lg:min-w-0">
+            <Reveal>
+               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-5 gap-x-4">
+                 {allChips.map(chip => {
+                   const isActive = activeChips.includes(chip);
+                   const isTabHovered = hoveredChips.includes(chip);
+                   const isChipHovered = hoveredChip === chip;
+                   const Icon = iconMap[chip] || FaCode;
+                   const color = brandColors[chip] || "#a78bfa";
+  
+                   // Chip hover shows its unique brand colour; tab hover glows the category white
+                   const inlineStyle: React.CSSProperties | undefined = isChipHovered
+                     ? { color, opacity: 1, filter: "none" }
+                     : isTabHovered
+                       ? { color: "#ffffff", opacity: 1, filter: "none" }
+                       : undefined;
+  
+                   return (
+                     <div 
+                       key={chip}
+                       onMouseEnter={() => setHoveredChip(chip)}
+                       onMouseLeave={() => setHoveredChip(null)}
+                       className={`flex items-center gap-2.5 min-w-0 cursor-default transition-all duration-300 ${
+                         active === null
+                           ? "text-muted-foreground opacity-70"
+                           : isActive ? "text-foreground opacity-100" : "text-muted-foreground opacity-30 grayscale"
+                       }`}
+                       style={inlineStyle}
+                     >
+                       <div className="flex items-center justify-center w-5 h-5 transition-colors duration-300 shrink-0">
+                         <Icon className="text-lg" />
+                       </div>
+                       <span 
+                         className={`text-sm leading-snug transition-colors duration-300 ${
+                           isActive ? "font-bold" : "font-semibold"
+                         }`}
+                       >
+                         {chip}
+                       </span>
+                     </div>
+                   );
+                 })}
+               </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

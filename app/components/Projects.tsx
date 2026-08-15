@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { projects } from "@/lib/data";
+import { projects, siteTheme } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
@@ -23,7 +23,7 @@ export default function Projects() {
             tag="Projects"
             title={
               <>
-                Things I&apos;ve <span className="grad-text">built &amp; shipped</span>
+                Things I&apos;ve <span className={siteTheme.textGradient}>built &amp; shipped</span>
               </>
             }
           />
@@ -44,7 +44,7 @@ export default function Projects() {
                   className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
               ) : (
-                <div className="h-full w-full bg-gradient-to-br from-indigo-600/20 via-fuchsia-600/10 to-transparent flex items-center justify-center">
+                <div className={`h-full w-full ${siteTheme.projectGradient} flex items-center justify-center`}>
                   <span className="text-7xl select-none opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">{featured.emoji}</span>
                 </div>
               )}
@@ -109,7 +109,7 @@ export default function Projects() {
                   ) : (
                     <div className={`h-full w-full flex items-center justify-center transition-all duration-500 ${
                       hoveredIdx === i
-                        ? "bg-gradient-to-br from-indigo-500/25 via-fuchsia-500/15 to-transparent"
+                        ? siteTheme.projectGradientHover
                         : "bg-gradient-to-br from-white/[0.03] via-white/[0.01] to-transparent"
                     }`}>
                       <span className={`text-5xl select-none transition-all duration-500 ${
@@ -165,7 +165,7 @@ export default function Projects() {
                 </div>
 
                 {/* Bottom accent line on hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 to-fuchsia-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className={`absolute bottom-0 left-0 right-0 h-[2px] ${siteTheme.activeGradient} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
               </div>
             </Reveal>
           ))}
