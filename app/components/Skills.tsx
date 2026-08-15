@@ -9,8 +9,8 @@ import {
   SiExpo, SiAndroidstudio, SiMongodb, SiPostgresql, SiMysql, SiRedis,
   SiGit, SiGithub, SiFigma, SiArduino, SiNumpy, SiPandas, SiHuggingface, SiOllama, SiLangchain
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
-import { FaAws, FaRobot, FaNetworkWired, FaMicrosoft, FaCode } from "react-icons/fa";
+import { TbApi, TbBrandOpenai } from "react-icons/tb";
+import { FaAws, FaRobot, FaNetworkWired, FaMicrosoft, FaCode, FaProjectDiagram } from "react-icons/fa";
 
 const iconMap: Record<string, React.ElementType> = {
   "React.js": SiReact,
@@ -37,6 +37,8 @@ const iconMap: Record<string, React.ElementType> = {
   "AI Agents": FaRobot,
   "Hugging Face": SiHuggingface,
   "Ollama": SiOllama,
+  "OpenAI Agent SDK": TbBrandOpenai,
+  "MCP": FaProjectDiagram,
   "NLP": FaNetworkWired,
   "Pandas": SiPandas,
   "NumPy": SiNumpy,
@@ -78,6 +80,8 @@ const brandColors: Record<string, string> = {
   "AI Agents": "#A855F7",
   "Hugging Face": "#FFD21E",
   "Ollama": "#FFFFFF",
+  "OpenAI Agent SDK": "#10A37F",
+  "MCP": "#3B82F6",
   "NLP": "#10B981",
   "Pandas": "#E70488",
   "NumPy": "#4DABCF",

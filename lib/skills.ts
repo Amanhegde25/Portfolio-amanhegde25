@@ -8,15 +8,9 @@ export type SkillCategory = {
 export const skillCategories: SkillCategory[] = [
   {
     id: "frontend",
-    label: "Frontend",
-    heading: "Frontend",
-    chips: ["React.js", "Next.js",  "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
-  },
-  {
-    id: "backend",
-    label: "Backend",
-    heading: "Backend",
-    chips: ["Node.js", "Express.js", "Flask", "Laravel", "PHP", "REST APIs", "JWT", "Auth0"],
+    label: "Web",
+    heading: "Web Development",
+    chips: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
   },
   {
     id: "mobile",
@@ -25,16 +19,22 @@ export const skillCategories: SkillCategory[] = [
     chips: ["React Native", "Expo", "Android Studio"],
   },
   {
-    id: "ai",
-    label: "AI & ML",
-    heading: "AI & Machine Learning",
-    chips: ["LLMs", "LangChain", "RAG", "AI Agents", "Hugging Face", "Ollama", "NLP", "Pandas", "NumPy"],
+    id: "backend",
+    label: "Backend",
+    heading: "Backend",
+    chips: ["Node.js", "Express.js", "Flask", "Laravel", "PHP", "JWT", "Auth0"],
   },
   {
     id: "data",
     label: "Databases",
     heading: "Databases & Caching",
     chips: ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
+  },
+  {
+    id: "ai",
+    label: "AI & ML",
+    heading: "AI & Machine Learning",
+    chips: ["Ollama", "AI Agents", "LangChain", "OpenAI Agent SDK", "MCP", "Pandas", "NumPy"],
   },
   {
     id: "cloud",
