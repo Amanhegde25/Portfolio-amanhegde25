@@ -1,8 +1,51 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { profile, siteTheme } from "@/lib/data";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
+const phrases = [
+  "hello world",
+  "['React', 'Next.js', 'AI']",
+  "const role = 'Full Stack'",
+  "{ status: 'Building' }",
+  "console.log('Let\\'s connect!')"
+];
+
 export default function Hero() {
+  const [text, setText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(100);
+
+  useEffect(() => {
+    const i = loopNum % phrases.length;
+    const fullText = phrases[i];
+
+    const handleTyping = () => {
+      setText(
+        isDeleting 
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 40 : 100);
+
+      if (!isDeleting && text === fullText) {
+        // Pause at the end of the phrase before deleting
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && text === "") {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTypingSpeed(500); // pause before starting next word
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, typingSpeed]);
+
   return (
     <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pb-8 pt-20">
       <div aria-hidden="true" className="absolute inset-0 -z-10">
@@ -12,8 +55,9 @@ export default function Hero() {
       </div>
 
       <div className="mx-auto max-w-4xl text-center">
-        <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-borderline bg-white/[0.03] px-5 py-2 font-mono text-sm text-muted">
-          <span className="text-emerald-400">&gt;</span> hello world
+        <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-borderline bg-white/[0.03] px-5 py-2 font-mono text-sm text-muted min-w-[280px] justify-center">
+          <span className="text-emerald-400">&gt;</span> 
+          <span>{text}<span className="animate-pulse font-bold">_</span></span>
         </p>
 
         <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl">
