@@ -14,14 +14,7 @@ const phrases = [
   "console.log('Let\\'s connect!')"
 ];
 
-const proofItems = [
-  "6+ Projects",
-  "Full-Stack",
-  "React",
-  "Node.js",
-  "Python",
-  "AI / ML",
-];
+
 
 export default function Hero() {
   const [text, setText] = useState("");
@@ -86,15 +79,15 @@ export default function Hero() {
           </h2>
 
           {/* Value proposition — the key missing piece */}
-          <p className="max-w-xl text-[15px] md:text-lg font-medium text-foreground/90 mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed">
-            I build modern web, mobile &amp; AI applications that solve real-world problems.
+          <p className="max-w-xl text-base md:text-lg font-medium text-foreground/90 mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed">
+            Building scalable full-stack applications &amp; intelligent AI solutions that solve real problems.
           </p>
 
           {/* CTA Buttons — "Let's Work Together" is now primary */}
-          <div className="flex flex-wrap items-center gap-3 md:gap-4 justify-center lg:justify-start mb-6 md:mb-8">
+          <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 justify-center lg:justify-start mb-6 md:mb-8">
             <a
               href="#contact"
-              className={`inline-flex items-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-6 py-3 md:px-7 md:py-3.5 text-[15px] font-semibold text-white ${siteTheme.activeShadow} transition`}
+              className={`inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-7 py-3.5 md:px-8 md:py-4 text-base font-semibold text-white ${siteTheme.activeShadow} transition`}
             >
               Let&apos;s Work Together
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -103,7 +96,7 @@ export default function Hero() {
             </a>
             <a
               href="#projects"
-              className="inline-flex items-center gap-2.5 rounded-full border border-borderline px-6 py-3 md:px-7 md:py-3.5 text-[15px] font-semibold text-foreground transition hover:border-blue-400 hover:text-blue-400"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full border border-borderline px-7 py-3.5 md:px-8 md:py-4 text-base font-semibold text-foreground transition hover:border-blue-400 hover:text-blue-400"
             >
               View Projects
             </a>
@@ -138,17 +131,6 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Proof bar — quick credibility summary */}
-          <div className="flex flex-wrap items-center gap-2 justify-center lg:justify-start">
-            {proofItems.map((item, i) => (
-              <span key={item} className="flex items-center gap-2 text-xs md:text-sm font-medium text-muted">
-                {item}
-                {i < proofItems.length - 1 && (
-                  <span className="text-borderline">·</span>
-                )}
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* Right: Hexagonal Photo */}

@@ -41,7 +41,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold tracking-tight">{profile.name}</h3>
               <p className="mt-1 font-medium text-accent">{profile.role}</p>
-              <p className="mt-2.5 text-sm text-faint">
+              <p className="mt-2.5 text-sm text-muted">
                 B.Tech Information Technology · KJ Somaiya College of Engineering · Mumbai
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-2.5">
@@ -62,15 +62,10 @@ export default function About() {
 
           <div>
             <Reveal>
-              <p className="mb-4 text-[15px] leading-relaxed text-muted max-w-[36ch] md:max-w-none">
-                I&apos;m a Full Stack Developer with a background in Information Technology, focused on building
-                practical, scalable solutions across front-end and back-end systems. Currently exploring{" "}
-                <strong className="font-semibold text-foreground">AI agents and automation</strong>, with a strong
-                interest in integrating intelligent systems into everyday workflows.
-              </p>
-              <p className="text-[15px] leading-relaxed text-muted max-w-[36ch] md:max-w-none">
-                From AI-powered platforms to facial recognition and offline LLM pipelines, I enjoy taking problems
-                from research to production — designing clean UIs on Figma, wiring robust APIs, and shipping products
+              <p className="text-base leading-relaxed text-muted max-w-[36ch] md:max-w-none">
+                Full Stack Developer focused on building practical, scalable solutions. Currently exploring{" "}
+                <strong className="font-semibold text-foreground">AI agents and automation</strong> — from offline LLM
+                pipelines to face-recognition systems. I design in Figma, build with React & Node, and ship products
                 people actually use.
               </p>
             </Reveal>
@@ -79,7 +74,7 @@ export default function About() {
               {aboutFacts.map((fact, i) => (
                 <Reveal as="li" key={fact.label} className={i >= 2 ? "col-span-1" : ""}>
                   <div className="rounded-xl border border-borderline bg-card px-4 py-4">
-                    <span className="mb-1 block text-xs uppercase tracking-[0.06em] text-faint">
+                    <span className="mb-1 block text-xs uppercase tracking-[0.06em] text-muted">
                       {fact.label}
                     </span>
                     <span className="text-sm font-semibold">{fact.value}</span>

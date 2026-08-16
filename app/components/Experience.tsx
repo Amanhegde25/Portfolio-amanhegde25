@@ -22,7 +22,7 @@ export default function Experience() {
             aria-hidden="true"
             className={`absolute bottom-2 left-[9px] top-2 w-0.5 ${siteTheme.timelineGradient}`}
           />
-          <ol className="space-y-7">
+          <ol className="space-y-8">
             {experiences.map((job) => (
               <Reveal as="li" key={job.org + job.role}>
                 <article className="relative rounded-2xl border border-borderline bg-card p-5 md:p-7 shadow-[0_12px_28px_rgba(0,0,0,0.28)]">

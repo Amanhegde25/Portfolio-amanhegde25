@@ -66,11 +66,11 @@ export default function Contact() {
                 Contact
               </span>
               <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-5xl">
-                Let&apos;s
-                <span className={siteTheme.textGradient}> Connect</span>
+                Ready to
+                <span className={siteTheme.textGradient}> Build Something?</span>
               </h2>
-              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-                Have a question or want to work together? Drop a message here.
+              <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
+                Have a project idea, a role to fill, or just want to connect? I&apos;d love to hear from you.
               </p>
 
               <div className="mt-8 grid gap-3.5">

@@ -83,13 +83,13 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`relative text-sm font-medium transition-colors hover:text-foreground py-2.5 md:py-0 w-full md:w-auto text-center ${
+                className={`relative text-sm font-medium transition-colors hover:text-foreground py-3.5 md:py-0 w-full md:w-auto text-center ${
                   isActive ? "text-foreground" : "text-muted"
                 }`}
               >
                 {link.label}
                 {isActive && (
-                  <span className={`absolute -bottom-1.5 left-1/2 h-[2px] w-1/2 -translate-x-1/2 ${siteTheme.activeGradient} rounded-full hidden md:block`} />
+                  <span className={`absolute -bottom-1.5 left-1/2 h-[2.5px] w-1/2 -translate-x-1/2 ${siteTheme.activeGradient} rounded-full hidden md:block`} />
                 )}
               </a>
             );

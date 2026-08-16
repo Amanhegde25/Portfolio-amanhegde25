@@ -11,9 +11,11 @@ import type { Project } from "@/lib/data";
 export default function Projects() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const featured = projects[0];
   const rest = projects.slice(1);
+  const visibleRest = showAll ? rest : rest.slice(0, 3);
 
   return (
     <section id="projects" className="section-pad bg-background-soft">
@@ -90,7 +92,7 @@ export default function Projects() {
 
         {/* Rest of Projects Grid */}
         <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((project, i) => (
+          {visibleRest.map((project, i) => (
             <Reveal key={project.title}>
               <div
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-borderline bg-card shadow-[0_12px_28px_rgba(0,0,0,0.28)] transition-all duration-400 hover:-translate-y-2 hover:border-accent/40 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)] cursor-pointer"
@@ -170,6 +172,29 @@ export default function Projects() {
             </Reveal>
           ))}
         </div>
+
+        {/* Show All / Show Less toggle */}
+        {rest.length > 3 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="inline-flex items-center gap-2 rounded-full border border-borderline px-7 py-3 text-sm font-semibold text-muted transition hover:border-accent hover:text-foreground"
+            >
+              {showAll ? "Show Less" : `Show All Projects (${rest.length})`}
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+                className={`transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}
+              >
+                <path d="M3 5.5L7 9.5L11 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
       
       {selectedProject && (
