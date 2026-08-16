@@ -33,7 +33,7 @@ export default function Projects() {
         <Reveal>
           <div
             onClick={() => setSelectedProject(featured)}
-            className="group relative mb-8 block overflow-hidden rounded-2xl border border-borderline bg-card transition-all duration-500 hover:border-accent/50 hover:shadow-[0_30px_80px_rgba(0,0,0,0.5)] cursor-pointer"
+            className="group relative mb-8 block overflow-hidden rounded-2xl border border-borderline bg-card shadow-[0_12px_28px_rgba(0,0,0,0.28)] transition-all duration-500 hover:border-accent/50 hover:shadow-[0_30px_80px_rgba(0,0,0,0.5)] cursor-pointer"
           >
             {/* Image Area */}
             <div className="relative h-[280px] md:h-[380px] overflow-hidden">
@@ -52,7 +52,7 @@ export default function Projects() {
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
 
               {/* Content overlaid at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
                 <div className="flex items-center gap-3 mb-3">
                   {featured.badge && (
                     <span className="rounded-full bg-emerald-500/20 border border-emerald-500/40 px-3 py-1 text-xs font-semibold text-emerald-400">
@@ -69,7 +69,7 @@ export default function Projects() {
                 <p className="mt-1 font-mono text-sm text-accent/80">{featured.tags}</p>
                 <p className="mt-3 max-w-2xl text-sm md:text-base text-muted leading-relaxed">{featured.description}</p>
                 <div className="mt-5 flex flex-wrap items-center gap-2">
-                  {featured.stack.map((tech) => (
+                  {featured.stack.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
                       className="rounded-lg border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs font-medium text-muted backdrop-blur-sm"
@@ -89,11 +89,11 @@ export default function Projects() {
         </Reveal>
 
         {/* Rest of Projects Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((project, i) => (
             <Reveal key={project.title}>
               <div
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-borderline bg-card transition-all duration-400 hover:-translate-y-2 hover:border-accent/40 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)] cursor-pointer"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-borderline bg-card shadow-[0_12px_28px_rgba(0,0,0,0.28)] transition-all duration-400 hover:-translate-y-2 hover:border-accent/40 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)] cursor-pointer"
                 onMouseEnter={() => setHoveredIdx(i)}
                 onMouseLeave={() => setHoveredIdx(null)}
                 onClick={() => setSelectedProject(project)}
@@ -145,7 +145,7 @@ export default function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-1 flex-col p-6 pt-2">
+                <div className="flex flex-1 flex-col p-4 pt-2 md:p-5 md:pt-2">
                   <h3 className="text-lg font-bold tracking-tight group-hover:text-accent transition-colors duration-300">
                     {project.title}
                   </h3>
@@ -153,7 +153,7 @@ export default function Projects() {
                   <p className="mt-3 flex-1 text-sm text-muted leading-relaxed">{project.description}</p>
 
                   <div className="mt-5 flex flex-wrap gap-1.5">
-                    {project.stack.map((tech) => (
+                    {project.stack.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
                         className="rounded-md border border-borderline bg-white/[0.04] px-2 py-1 text-[11px] font-medium text-muted transition-colors duration-300 group-hover:border-accent/20 group-hover:text-foreground/70"

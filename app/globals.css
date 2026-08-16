@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a12;
+  --background: #0B0814;
   --background-soft: #10101c;
-  --card: #141424;
+  --card: #131022;
   --foreground: #e8e8f2;
   --muted: #9a9ab0;
   --faint: #6b6b85;
   --accent: #818cf8;
-  --border: rgba(255, 255, 255, 0.08);
+  --border: #26213A;
   --grad-text: linear-gradient(120deg, #a5b4fc, #e879f9);
 }
 
@@ -51,7 +51,7 @@ body {
 }
 
 .section-pad {
-  @apply py-24 md:py-32;
+  @apply py-16 md:py-[88px];
 }
 
 /* ---------- Scroll reveal ---------- */
