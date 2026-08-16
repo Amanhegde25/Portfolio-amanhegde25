@@ -7,10 +7,17 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
+      
+      // Scroll progress calculation
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(progress, 100));
       
       let current = "";
       const sections = navLinks.map(link => link.href.substring(1));
@@ -54,7 +61,7 @@ export default function Nav() {
         </a>
 
         <nav
-          className={`fixed inset-x-0 top-[57px] flex flex-col items-center gap-4 border-b border-borderline bg-background-soft px-6 py-6 transition-transform duration-300 md:static md:inset-auto md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0 md:translate-y-0 ${
+          className={`fixed inset-x-0 top-[57px] flex flex-col items-center gap-1 border-b border-borderline bg-background-soft px-6 py-4 transition-transform duration-300 md:static md:inset-auto md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0 md:translate-y-0 ${
             open ? "translate-y-0" : "-translate-y-[130%]"
           }`}
           aria-label="Main navigation"
@@ -67,7 +74,7 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`rounded-full ${siteTheme.activeGradient} px-5 py-2 text-sm font-semibold text-white`}
+                className={`rounded-full ${siteTheme.activeGradient} px-5 py-2.5 md:py-2 text-sm font-semibold text-white mt-2 md:mt-0`}
               >
                 {link.label}
               </a>
@@ -76,13 +83,13 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`relative text-sm font-medium transition-colors hover:text-foreground ${
+                className={`relative text-sm font-medium transition-colors hover:text-foreground py-2.5 md:py-0 w-full md:w-auto text-center ${
                   isActive ? "text-foreground" : "text-muted"
                 }`}
               >
                 {link.label}
                 {isActive && (
-                  <span className={`absolute -bottom-1.5 left-1/2 h-[2px] w-1/2 -translate-x-1/2 ${siteTheme.activeGradient} rounded-full`} />
+                  <span className={`absolute -bottom-1.5 left-1/2 h-[2px] w-1/2 -translate-x-1/2 ${siteTheme.activeGradient} rounded-full hidden md:block`} />
                 )}
               </a>
             );
@@ -94,7 +101,7 @@ export default function Nav() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex flex-col gap-1.5 p-1 md:hidden"
+          className="flex flex-col gap-1.5 p-2 md:hidden"
         >
           <span
             className={`h-0.5 w-5 rounded bg-foreground transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
@@ -105,6 +112,17 @@ export default function Nav() {
           />
         </button>
       </div>
+
+      {/* Scroll progress bar */}
+      <div
+        className="scroll-progress"
+        style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="Page scroll progress"
+      />
     </header>
   );
 }

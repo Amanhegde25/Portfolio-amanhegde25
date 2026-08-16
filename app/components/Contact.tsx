@@ -69,7 +69,7 @@ export default function Contact() {
                 Let&apos;s
                 <span className={siteTheme.textGradient}> Connect</span>
               </h2>
-              <p className="mt-5 max-w-md text-muted">
+              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
                 Have a question or want to work together? Drop a message here.
               </p>
 
@@ -82,9 +82,9 @@ export default function Contact() {
                       href={link.href}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="group flex items-center gap-3 text-muted transition hover:translate-x-1 hover:text-foreground"
+                      className="group flex items-center gap-3 text-[15px] text-muted transition hover:translate-x-1 hover:text-foreground"
                     >
-                      <span className="grid h-9 w-9 place-items-center rounded-[10px] border border-borderline bg-card text-sm text-accent transition-colors group-hover:text-foreground">
+                      <span className="grid h-11 w-11 place-items-center rounded-[10px] border border-borderline bg-card text-sm text-accent transition-colors group-hover:text-foreground">
                         <Icon aria-hidden="true" />
                       </span>
                       {link.label}
@@ -139,7 +139,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={sending}
-                className={`inline-flex w-full items-center justify-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-7 py-3.5 font-semibold text-white ${siteTheme.activeShadow} transition disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0`}
+                className={`inline-flex w-full items-center justify-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-7 py-3.5 min-h-[48px] font-semibold text-white ${siteTheme.activeShadow} transition disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0`}
               >
                 {sending ? "Sending…" : "Send Message"}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

@@ -188,7 +188,7 @@ export default function Skills() {
           </div>
           <div className="lg:flex-1 lg:min-w-0">
             <Reveal>
-               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-5 gap-x-4">
+               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-y-3 gap-x-3 md:gap-y-5 md:gap-x-4">
                  {allChips.map(chip => {
                    const isActive = activeChips.includes(chip);
                    const isTabHovered = hoveredChips.includes(chip);

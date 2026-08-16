@@ -25,7 +25,7 @@ export default function Experience() {
           <ol className="space-y-7">
             {experiences.map((job) => (
               <Reveal as="li" key={job.org + job.role}>
-                <article className="relative rounded-2xl border border-borderline bg-card p-7">
+                <article className="relative rounded-2xl border border-borderline bg-card p-5 md:p-7 shadow-[0_12px_28px_rgba(0,0,0,0.28)]">
                   <span
                     aria-hidden="true"
                     className="absolute -left-9 top-6 h-5 w-5 rounded-full border-[3px] border-accent bg-background shadow-[0_0_0_6px_rgba(129,140,248,0.15)]"
@@ -35,7 +35,7 @@ export default function Experience() {
                     <p className="text-[15px] font-semibold text-accent">{job.org}</p>
                     <p className="mt-0.5 font-mono text-sm text-faint">{job.date}</p>
                   </div>
-                  <ul className="grid list-disc gap-2 pl-5 text-sm text-muted">
+                  <ul className="grid list-disc gap-2 pl-5 text-[15px] text-muted">
                     {job.points.map((point) => (
                       <li key={point}>{point}</li>
                     ))}

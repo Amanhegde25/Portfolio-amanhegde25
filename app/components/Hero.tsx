@@ -14,6 +14,15 @@ const phrases = [
   "console.log('Let\\'s connect!')"
 ];
 
+const proofItems = [
+  "6+ Projects",
+  "Full-Stack",
+  "React",
+  "Node.js",
+  "Python",
+  "AI / ML",
+];
+
 export default function Hero() {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -48,7 +57,7 @@ export default function Hero() {
   }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 pb-8 pt-20">
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-6 pb-6 md:pb-8 md:pt-20">
       {/* Background effects */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="grid-overlay absolute inset-0" />
@@ -56,33 +65,52 @@ export default function Hero() {
         <div className={`blob -bottom-36 -left-36 h-[460px] w-[460px] ${siteTheme.blob2} [animation-delay:-6s]`} />
       </div>
 
-      <div className="mx-auto w-full max-w-[1400px] flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="mx-auto w-full max-w-[1400px] flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16">
         
         {/* Left: Text Content */}
         <div className="flex-1 text-center lg:text-left">
           {/* Typing terminal widget */}
           <div className="mx-auto max-w-4xl lg:mx-0">
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-borderline bg-white/[0.03] px-5 py-2 font-mono text-sm text-muted min-w-[280px] justify-center">
+            <p className="mb-4 md:mb-6 inline-flex items-center gap-2 rounded-full border border-borderline bg-white/[0.03] px-4 py-1.5 md:px-5 md:py-2 font-mono text-xs md:text-sm text-muted min-w-[240px] md:min-w-[280px] justify-center">
               <span className="text-emerald-400">&gt;</span> 
               <span>{text}<span className="animate-pulse font-bold">_</span></span>
             </p>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-3">
+          <h1 className="text-[28px] md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-2 md:mb-3">
             {profile.name}
           </h1>
           
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6">
-            And I&apos;m a <span className={siteTheme.textGradient}>{profile.role}</span>
+          <h2 className="text-lg md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">
+            I&apos;m a <span className={siteTheme.textGradient}>{profile.role}</span>
           </h2>
 
-          <p className="max-w-xl text-base text-muted md:text-lg mx-auto lg:mx-0 mb-8">
-            A passionate developer from Mumbai, crafting scalable web &amp; mobile apps 
-            and integrating AI into everyday workflows.
+          {/* Value proposition — the key missing piece */}
+          <p className="max-w-xl text-[15px] md:text-lg font-medium text-foreground/90 mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed">
+            I build modern web, mobile &amp; AI applications that solve real-world problems.
           </p>
 
+          {/* CTA Buttons — "Let's Work Together" is now primary */}
+          <div className="flex flex-wrap items-center gap-3 md:gap-4 justify-center lg:justify-start mb-6 md:mb-8">
+            <a
+              href="#contact"
+              className={`inline-flex items-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-6 py-3 md:px-7 md:py-3.5 text-[15px] font-semibold text-white ${siteTheme.activeShadow} transition`}
+            >
+              Let&apos;s Work Together
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2 8h12m0 0L9 3m5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2.5 rounded-full border border-borderline px-6 py-3 md:px-7 md:py-3.5 text-[15px] font-semibold text-foreground transition hover:border-blue-400 hover:text-blue-400"
+            >
+              View Projects
+            </a>
+          </div>
+
           {/* Social Icons */}
-          <div className="flex items-center gap-4 justify-center lg:justify-start mb-8">
+          <div className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start mb-6 md:mb-8">
             <a 
               href={profile.github} 
               target="_blank" 
@@ -110,23 +138,16 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4 justify-center lg:justify-start">
-            <a
-              href="#projects"
-              className={`inline-flex items-center gap-2.5 rounded-full ${siteTheme.activeGradient} px-7 py-3.5 font-semibold text-white ${siteTheme.activeShadow} transition`}
-            >
-              See Projects
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M2 8h12m0 0L9 3m5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2.5 rounded-full border border-borderline px-7 py-3.5 font-semibold text-foreground transition hover:border-blue-400 hover:text-blue-400"
-            >
-              Contact Me
-            </a>
+          {/* Proof bar — quick credibility summary */}
+          <div className="flex flex-wrap items-center gap-2 justify-center lg:justify-start">
+            {proofItems.map((item, i) => (
+              <span key={item} className="flex items-center gap-2 text-xs md:text-sm font-medium text-muted">
+                {item}
+                {i < proofItems.length - 1 && (
+                  <span className="text-borderline">·</span>
+                )}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -144,7 +165,7 @@ export default function Hero() {
                 src="/imgs/Photo-without-bg.png"
                 alt={profile.name}
                 fill
-                sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 440px"
+                sizes="(max-width: 768px) 170px, (max-width: 1024px) 400px, 440px"
                 priority
                 unoptimized
                 style={{ objectFit: "cover", objectPosition: "top center" }}
@@ -158,7 +179,7 @@ export default function Hero() {
       <a
         href="#about"
         aria-label="Scroll down"
-        className="bounce-soft absolute bottom-7 left-1/2 -translate-x-1/2 text-faint hover:text-foreground"
+        className="bounce-soft absolute bottom-7 left-1/2 -translate-x-1/2 text-faint hover:text-foreground hidden md:block"
       >
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
           <path d="M11 4v14m0 0 6-6m-6 6-6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />

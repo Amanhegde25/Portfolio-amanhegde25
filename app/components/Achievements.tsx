@@ -23,11 +23,11 @@ export default function Achievements() {
           />
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 md:gap-6 md:grid-cols-3">
           {achievements.map((item) => (
             <Reveal key={item.title}>
               <div 
-                className="group h-full cursor-pointer flex flex-col overflow-hidden rounded-2xl border border-borderline bg-card transition duration-400 hover:-translate-y-2 hover:border-fuchsia-500/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+                className="group h-full cursor-pointer flex flex-col overflow-hidden rounded-2xl border border-borderline bg-card shadow-[0_12px_28px_rgba(0,0,0,0.28)] transition duration-400 hover:-translate-y-2 hover:border-fuchsia-500/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
                 onClick={() => setSelectedAchievement(item)}
               >
                 {/* Thumbnail Area (Optional) */}
@@ -42,7 +42,7 @@ export default function Achievements() {
                 )}
                 
                 {/* Content Area */}
-                <div className="flex flex-1 flex-col p-8">
+                <div className="flex flex-1 flex-col p-5 md:p-8">
                   <span className="mb-4 self-start rounded-full border border-fuchsia-500/30 bg-fuchsia-500/15 px-3.5 py-1 font-mono text-xs uppercase tracking-[0.06em] text-fuchsia-300">
                     {item.badge}
                   </span>

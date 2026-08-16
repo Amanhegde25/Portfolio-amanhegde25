@@ -5,8 +5,8 @@
   --background-soft: #10101c;
   --card: #131022;
   --foreground: #e8e8f2;
-  --muted: #9a9ab0;
-  --faint: #6b6b85;
+  --muted: #b0b0c8;
+  --faint: #8585a0;
   --accent: #818cf8;
   --border: #26213A;
   --grad-text: linear-gradient(120deg, #a5b4fc, #e879f9);
@@ -51,7 +51,7 @@ body {
 }
 
 .section-pad {
-  @apply py-16 md:py-[88px];
+  @apply py-12 md:py-[88px];
 }
 
 /* ---------- Scroll reveal ---------- */
@@ -141,8 +141,8 @@ body {
 /* ---------- Hero hexagonal photo ---------- */
 .hero-hexagon-wrapper {
   position: relative;
-  width: 300px;
-  height: 340px;
+  width: 170px;
+  height: 190px;
 }
 
 @media (min-width: 768px) {
@@ -225,8 +225,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1.5px solid rgba(59, 130, 246, 0.4);
   color: var(--muted);
@@ -238,4 +238,28 @@ body {
   color: #60a5fa;
   box-shadow: 0 0 18px rgba(59, 130, 246, 0.3);
   transform: translateY(-2px);
+}
+
+/* ---------- Focus-visible for keyboard nav ---------- */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Scroll progress bar ---------- */
+.scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #818cf8, #e879f9);
+  transition: width 50ms linear;
+  z-index: 60;
 }
