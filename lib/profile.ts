@@ -1,27 +1,27 @@
 export const siteTheme = {
   // Brand gradient (used for buttons and active states)
-  activeGradient: "bg-gradient-to-r from-indigo-500 to-fuchsia-500",
-  activeGradientReversed: "bg-gradient-to-r from-fuchsia-500 to-indigo-500",
+  activeGradient: "bg-gradient-to-r from-blue-500 to-blue-700",
+  activeGradientReversed: "bg-gradient-to-r from-blue-700 to-blue-500",
   
   // Shadow used for primary buttons
-  activeShadow: "shadow-[0_10px_30px_rgba(147,51,234,0.35)] hover:shadow-[0_16px_40px_rgba(147,51,234,0.5)]",
+  activeShadow: "shadow-[0_10px_30px_rgba(59,130,246,0.35)] hover:shadow-[0_16px_40px_rgba(59,130,246,0.5)]",
   
   // Background gradient for cards (translucent)
-  cardGradient: "bg-gradient-to-br from-indigo-500/10 to-fuchsia-500/10",
+  cardGradient: "bg-gradient-to-br from-blue-500/10 to-blue-700/10",
   
   // Background gradient for project cards
-  projectGradient: "bg-gradient-to-br from-indigo-600/20 via-fuchsia-600/10 to-transparent",
-  projectGradientHover: "bg-gradient-to-br from-indigo-500/25 via-fuchsia-500/15 to-transparent",
+  projectGradient: "bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-transparent",
+  projectGradientHover: "bg-gradient-to-br from-blue-500/25 via-blue-600/15 to-transparent",
   
   // Timeline line gradient
-  timelineGradient: "bg-gradient-to-b from-indigo-400 to-fuchsia-500 to-transparent",
+  timelineGradient: "bg-gradient-to-b from-blue-400 to-blue-700 to-transparent",
 
   // Background blobs in Hero section
-  blob1: "bg-indigo-600",
-  blob2: "bg-fuchsia-700",
+  blob1: "bg-blue-500",
+  blob2: "bg-blue-700",
   
   // Text gradient for Hero section
-  textGradient: "bg-gradient-to-r from-indigo-400 to-fuchsia-400 text-transparent bg-clip-text",
+  textGradient: "bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text",
 };
 
 export const profile = {

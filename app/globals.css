@@ -137,3 +137,105 @@ body {
 .fade-up {
   animation: fade-up 0.35s ease;
 }
+
+/* ---------- Hero hexagonal photo ---------- */
+.hero-hexagon-wrapper {
+  position: relative;
+  width: 300px;
+  height: 340px;
+}
+
+@media (min-width: 768px) {
+  .hero-hexagon-wrapper {
+    width: 400px;
+    height: 450px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-hexagon-wrapper {
+    width: 440px;
+    height: 495px;
+  }
+}
+
+/* Bright cyan glow behind hexagon */
+.hero-hexagon-glow {
+  position: absolute;
+  inset: -30px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: radial-gradient(
+    ellipse at 50% 60%,
+    rgba(0, 255, 255, 0.7) 0%,
+    rgba(0, 200, 255, 0.4) 30%,
+    rgba(0, 150, 255, 0.15) 60%,
+    transparent 80%
+  );
+  filter: blur(24px);
+  animation: hex-glow-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes hex-glow-pulse {
+  from {
+    opacity: 0.7;
+    filter: blur(24px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(32px);
+  }
+}
+
+/* Thick hexagon border: cyan → dark blue gradient */
+.hero-hexagon-border {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(160deg, #00e5ff, #1565c0, #0d47a1, #00bcd4);
+}
+
+/* Blue fill inside the hexagon (behind the photo) */
+.hero-hexagon-fill {
+  position: absolute;
+  inset: 6px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(180deg, #0f2044 0%, #1a3060 50%, #0d1a35 100%);
+}
+
+/* Image layer — open top so head overflows above hexagon */
+.hero-hexagon-img {
+  position: absolute;
+  inset: 6px;
+  z-index: 2;
+  /* Extends straight up from the hex side-vertices, keeping hex shape on sides & bottom */
+  clip-path: polygon(
+    0% -30%,     /* top-left extended above */
+    100% -30%,   /* top-right extended above */
+    100% 25%,    /* right hex vertex (top) */
+    100% 75%,    /* right hex vertex (bottom) */
+    50% 100%,    /* bottom hex vertex */
+    0% 75%,      /* left hex vertex (bottom) */
+    0% 25%       /* left hex vertex (top) */
+  );
+  overflow: visible;
+}
+
+/* ---------- Hero social icons ---------- */
+.hero-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(59, 130, 246, 0.4);
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.hero-social-icon:hover {
+  border-color: #3b82f6;
+  color: #60a5fa;
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+}
