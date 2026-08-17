@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Achievement, siteTheme } from "@/lib/data";
 import { FaTimes, FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from "react-icons/fa";
+import { useLenis } from "lenis/react";
 
 interface AchievementModalProps {
   achievement: Achievement;
@@ -11,6 +12,7 @@ interface AchievementModalProps {
 
 export default function AchievementModal({ achievement, onClose }: AchievementModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const lenis = useLenis();
   
   // Create a combined media array: if achievement.media exists, use it.
   // Otherwise fallback to achievement.thumbnail as a single-item array, or empty.
@@ -57,10 +59,16 @@ export default function AchievementModal({ achievement, onClose }: AchievementMo
   // Prevent scroll on body when modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    if (lenis) {
+      lenis.stop();
+    }
     return () => {
       document.body.style.overflow = "auto";
+      if (lenis) {
+        lenis.start();
+      }
     };
-  }, []);
+  }, [lenis]);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 md:px-6">

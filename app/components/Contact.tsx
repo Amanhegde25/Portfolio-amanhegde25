@@ -5,6 +5,7 @@ import { profile, siteTheme } from "@/lib/data";
 import { FaGithub, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import Reveal from "./Reveal";
+import PlanetReveal from "./PlanetReveal";
 
 const contactLinks = [
   { icon: SiGmail, label: profile.email, href: `mailto:${profile.email}` },
@@ -56,8 +57,9 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-pad bg-background-soft">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="contact" className="snap-start snap-always section-pad bg-background-soft">
+      <PlanetReveal>
+        <div className="mx-auto max-w-6xl px-6">
         <div className="grid items-center gap-14 md:grid-cols-2">
           <Reveal>
             <div>
@@ -155,6 +157,7 @@ export default function Contact() {
           </Reveal>
         </div>
       </div>
+      </PlanetReveal>
     </section>
   );
 }

@@ -1,11 +1,13 @@
 import { experiences, siteTheme } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import PlanetReveal from "./PlanetReveal";
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-pad">
-      <div className="mx-auto max-w-[1400px] px-6">
+    <section id="experience" className="snap-start snap-always section-pad">
+      <PlanetReveal>
+        <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <SectionHeading
             num="( 04 )"
@@ -80,6 +82,7 @@ export default function Experience() {
           </ol>
         </div>
       </div>
+      </PlanetReveal>
     </section>
   );
 }

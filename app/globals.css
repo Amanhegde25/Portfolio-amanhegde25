@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0B0814;
-  --background-soft: #10101c;
-  --card: #131022;
+  --background: transparent;
+  --background-soft: rgba(16, 16, 28, 0.15);
+  --card: rgba(19, 16, 34, 0.35);
   --foreground: #e8e8f2;
   --muted: #c8c8de;
   --faint: #9e9ebb;
   --accent: #818cf8;
-  --border: #26213A;
+  --border: rgba(38, 33, 58, 0.5);
   --grad-text: linear-gradient(120deg, #a5b4fc, #e879f9);
 }
 
@@ -25,9 +25,6 @@
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   background: var(--background);

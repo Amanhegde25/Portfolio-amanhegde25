@@ -37,6 +37,8 @@ export const metadata: Metadata = {
   },
 };
 
+import SmoothScroll from "./components/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: {
@@ -48,7 +50,11 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-screen flex flex-col antialiased">{children}</body>
+      <body className="min-h-screen flex flex-col antialiased">
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
+      </body>
     </html>
   );
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { profile, siteTheme } from "@/lib/data";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import PlanetReveal from "./PlanetReveal";
 import { SiGmail } from "react-icons/si";
 
 const phrases = [
@@ -64,14 +65,14 @@ export default function Hero() {
   }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <section id="home" className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-24 pb-10 md:pt-28">
+    <section id="home" className="snap-start snap-always relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-24 pb-10 md:pt-28">
       {/* Background effects */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="grid-overlay absolute inset-0" />
         <div className={`blob -right-32 -top-32 h-[520px] w-[520px] ${siteTheme.blob1}`} />
         <div className={`blob -bottom-36 -left-36 h-[460px] w-[460px] ${siteTheme.blob2} [animation-delay:-6s]`} />
       </div>
-
+      <PlanetReveal>
       <div className="page-enter mx-auto flex w-full max-w-[1400px] flex-col-reverse items-center gap-10 lg:flex-row lg:gap-16">
         {/* Left: Text Content */}
         <div className="flex-1 text-center lg:text-left">
@@ -168,6 +169,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      </PlanetReveal>
     </section>
   );
 }

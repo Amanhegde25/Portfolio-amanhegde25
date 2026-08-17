@@ -66,7 +66,7 @@ export default function Nav() {
             {/* <span className={`grid h-7 w-7 place-items-center rounded-lg ${siteTheme.activeGradient} font-mono text-sm text-white`}>
               A
             </span> */}
-            <span className="font-bold tracking-tight pl-5">Portfolio.dev</span>
+            <span className="font-bold tracking-tight ">Portfolio.dev</span>
           </a>
 
           <nav
@@ -97,9 +97,6 @@ export default function Nav() {
                   }`}
                 >
                   {link.label}
-                  {isActive && (
-                    <span className={`absolute -bottom-1.5 left-1/2 h-[2.5px] w-1/2 -translate-x-1/2 ${siteTheme.activeGradient} rounded-full hidden md:block`} />
-                  )}
                 </a>
               );
             })}
@@ -121,17 +118,6 @@ export default function Nav() {
             />
           </button>
         </div>
-
-        {/* Scroll progress bar */}
-        <div
-          className="scroll-progress"
-          style={{ width: `${scrollProgress}%` }}
-          role="progressbar"
-          aria-valuenow={Math.round(scrollProgress)}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label="Page scroll progress"
-        />
       </header>
 
       {/* Dot rail — appears once you've scrolled past the hero */}

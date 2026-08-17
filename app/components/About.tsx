@@ -1,6 +1,6 @@
 import { aboutFacts, profile, siteTheme } from "@/lib/data";
 import Reveal from "./Reveal";
-
+import PlanetReveal from "./PlanetReveal";
 const socials = [
   { label: "GitHub", href: profile.github },
   { label: "LinkedIn", href: profile.linkedin },
@@ -9,8 +9,9 @@ const socials = [
 
 export default function About() {
   return (
-    <section id="about" className="section-pad bg-background-soft">
-      <div className="mx-auto max-w-[1400px] px-6">
+    <section id="about" className="snap-start snap-always section-pad bg-background-soft">
+      <PlanetReveal>
+        <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <div className="mb-14 max-w-3xl">
             <span className="mb-5 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-accent">
@@ -87,7 +88,8 @@ export default function About() {
             </ul>
           </div>
         </div>
-      </div>
+        </div>
+      </PlanetReveal>
     </section>
   );
 }

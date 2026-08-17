@@ -4,6 +4,7 @@ import { useState } from "react";
 import { projects, siteTheme } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import PlanetReveal from "./PlanetReveal";
 import ProjectModal from "./ProjectModal";
 import type { Project } from "@/lib/data";
 
@@ -14,8 +15,9 @@ export default function Projects() {
   const visible = showAll ? projects : projects.slice(0, 5);
 
   return (
-    <section id="projects" className="section-pad bg-background-soft">
-      <div className="mx-auto max-w-[1400px] px-6">
+    <section id="projects" className="snap-start snap-always section-pad bg-background-soft">
+      <PlanetReveal>
+        <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <SectionHeading
             num="( 03 )"
@@ -49,10 +51,20 @@ export default function Projects() {
 
                 {/* Title + Meta + Accordion Thumbnail */}
                 <span className="min-w-0 flex flex-col">
-                  <span className="block truncate text-xl font-extrabold tracking-tight transition-colors duration-300 group-hover:text-accent md:text-3xl">
-                    {project.title}
+                  <span className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                    <span className="block truncate text-xl font-extrabold tracking-tight transition-colors duration-300 group-hover:text-accent md:text-3xl shrink-0">
+                      {project.title}
+                    </span>
+                    {project.description && (
+                      <>
+                        <span className="hidden text-xl text-borderline md:block">|</span>
+                        <span className="text-sm text-muted md:text-base flex-1">
+                          {project.description}
+                        </span>
+                      </>
+                    )}
                   </span>
-                  <span className="mt-1.5 block font-mono text-xs uppercase tracking-[0.1em] text-faint">
+                  <span className="mt-2 md:mt-1.5 block font-mono text-xs uppercase tracking-[0.1em] text-faint">
                     {project.tags}
                   </span>
 
@@ -113,6 +125,7 @@ export default function Projects() {
           </div>
         )}
       </div>
+      </PlanetReveal>
 
       {selectedProject && (
         <ProjectModal

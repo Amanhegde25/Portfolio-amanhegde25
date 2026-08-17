@@ -4,14 +4,16 @@ import { useState } from "react";
 import { achievements, siteTheme, type Achievement } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import PlanetReveal from "./PlanetReveal";
 import AchievementModal from "./AchievementModal";
 
 export default function Achievements() {
   const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
 
   return (
-    <section id="achievements" className="section-pad bg-background-soft">
-      <div className="mx-auto max-w-[1400px] px-6">
+    <section id="achievements" className="snap-start snap-always section-pad bg-background-soft">
+      <PlanetReveal>
+        <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <SectionHeading
             num="( 05 )"
@@ -57,6 +59,7 @@ export default function Achievements() {
           ))}
         </div>
       </div>
+      </PlanetReveal>
 
       {selectedAchievement && (
         <AchievementModal 

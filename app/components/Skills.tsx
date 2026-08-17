@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { skillCategories, siteTheme } from "@/lib/data";
 import Reveal from "./Reveal";
+import PlanetReveal from "./PlanetReveal";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiHtml5, SiCss, SiTailwindcss, SiJavascript,
   SiNodedotjs, SiExpress, SiFlask, SiLaravel, SiPhp, SiJsonwebtokens, SiAuth0,
@@ -11,8 +12,9 @@ import {
 } from "react-icons/si";
 import { TbApi, TbBrandOpenai } from "react-icons/tb";
 import { FaAws, FaRobot, FaNetworkWired, FaMicrosoft, FaCode, FaProjectDiagram } from "react-icons/fa";
+import { IconType } from "react-icons";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, IconType> = {
   "React.js": SiReact,
   "Next.js": SiNextdotjs,
   "React Native": SiReact,
@@ -115,8 +117,9 @@ export default function Skills() {
   const allChips = Array.from(new Set(skillCategories.flatMap(c => c.chips)));
 
   return (
-    <section id="skills" className="section-pad">
-      <div className="mx-auto max-w-[1400px] px-6 flex flex-col">
+    <section id="skills" className="snap-start snap-always section-pad">
+      <PlanetReveal>
+        <div className="mx-auto max-w-[1400px] px-6 flex flex-col">
         
         {/* Top Text Section */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
@@ -236,7 +239,8 @@ export default function Skills() {
             </Reveal>
           </div>
         </div>
-      </div>
+        </div>
+      </PlanetReveal>
     </section>
   );
 }
