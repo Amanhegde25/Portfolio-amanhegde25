@@ -21,8 +21,8 @@ export default function Nav() {
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(Math.min(progress, 100));
 
-      // Once we scroll past the hero, swap the top nav for the dot rail
-      setPastHero(window.scrollY > window.innerHeight * 0.75);
+      // Once the absolute nav bar scrolls out of view, show the dot rail
+      setPastHero(window.scrollY > 80);
 
       let current = "";
       const sections = navLinks.map((link) => link.href.substring(1));
@@ -57,9 +57,7 @@ export default function Nav() {
     <>
       {/* Top navbar — visible until you scroll past the hero */}
       <header
-        className={`fixed inset-x-0 top-0 z-50 border-b border-borderline bg-background/75 backdrop-blur-md transition-all duration-500 ${
-          scrolled ? "shadow-[0_10px_30px_rgba(0,0,0,0.35)]" : ""
-        } ${pastHero ? "pointer-events-none -translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+        className="absolute inset-x-0 top-0 z-50 border-b border-borderline bg-background/75 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3.5">
           <a href="#home" className="flex items-center gap-2.5 font-bold tracking-tight">
@@ -120,20 +118,25 @@ export default function Nav() {
         </div>
       </header>
 
-      {/* Dot rail — appears once you've scrolled past the hero */}
+      {/* Dot rail / Bottom bar — appears once you've scrolled past the hero */}
       <nav
         aria-label="Section navigation"
         onMouseEnter={() => setHoveringRail(true)}
         onMouseLeave={() => setHoveringRail(false)}
-        className={`fixed right-4 top-1/2 z-50 -translate-y-1/2 transition-all duration-500 md:right-6 ${
-          pastHero ? "opacity-100 translate-x-0" : "pointer-events-none opacity-0 translate-x-4"
+        className={`fixed z-50 transition-all duration-500 
+          bottom-6 left-1/2 -translate-x-1/2 
+          md:bottom-auto md:left-auto md:right-6 md:top-1/2 md:-translate-x-0 md:-translate-y-1/2 
+          ${
+          pastHero 
+            ? "opacity-100 translate-y-0 md:translate-x-0" 
+            : "pointer-events-none opacity-0 translate-y-4 md:translate-y-0 md:translate-x-4"
         }`}
       >
         <div
-          className={`relative flex flex-col items-end transition-all duration-400 ${
+          className={`relative flex flex-row md:flex-col items-center md:items-end transition-all duration-400 ${
             hoveringRail
-              ? "rounded-2xl border border-white/[0.06] bg-background/80 p-4 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl"
-              : "p-1"
+              ? "rounded-2xl bg-background/90 p-3 md:p-4 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-2xl border border-white/10"
+              : "p-2 px-4 md:px-1 md:p-1 gap-4 md:gap-0 rounded-full bg-background/60 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none border border-white/10 md:border-transparent shadow-xl md:shadow-none"
           }`}
         >
 
@@ -148,14 +151,14 @@ export default function Nav() {
                 aria-current={isActive ? "true" : undefined}
                 className={`group relative flex items-center justify-end transition-all duration-300 ${
                   hoveringRail
-                    ? "gap-3 rounded-lg px-2 py-2.5 hover:bg-white/[0.04]"
-                    : "py-2"
+                    ? "md:gap-3 rounded-lg md:px-2 md:py-2.5 hover:bg-white/[0.04]"
+                    : "py-1 md:py-2"
                 }`}
                 style={{ animationDelay: `${idx * 30}ms` }}
               >
-                {/* Label */}
+                {/* Label (Hidden on mobile) */}
                 <span
-                  className={`whitespace-nowrap overflow-hidden text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 ease-out ${
+                  className={`hidden md:block whitespace-nowrap overflow-hidden text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 ease-out ${
                     hoveringRail ? "max-w-[140px] pr-1 opacity-100" : "max-w-0 opacity-0"
                   } ${
                     isActive
