@@ -22,6 +22,23 @@ export default function Hero() {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
 
+  const [roleText, setRoleText] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const roleString = profile.role;
+    const typingInterval = setInterval(() => {
+      if (i < roleString.length) {
+        setRoleText(roleString.substring(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 50);
+
+    return () => clearInterval(typingInterval);
+  }, []);
+
   useEffect(() => {
     const i = loopNum % phrases.length;
     const fullText = phrases[i];
@@ -75,7 +92,7 @@ export default function Hero() {
           </h1>
           
           <h2 className="text-lg md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">
-            I&apos;m a <span className={siteTheme.textGradient}>{profile.role}</span>
+            I&apos;m a <span className={siteTheme.textGradient}><span>{roleText}<span className="animate-pulse font-bold">_</span></span></span>
           </h2>
 
           {/* Value proposition — the key missing piece */}

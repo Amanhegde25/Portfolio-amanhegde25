@@ -66,8 +66,8 @@ export default function Contact() {
                 Contact
               </span>
               <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-5xl">
-                Ready to
-                <span className={siteTheme.textGradient}> Build Something?</span>
+                Let's
+                <span className={siteTheme.textGradient}> Connect </span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
                 Have a project idea, a role to fill, or just want to connect? I&apos;d love to hear from you.
