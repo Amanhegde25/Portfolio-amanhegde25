@@ -63,10 +63,10 @@ export default function Nav() {
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3.5">
           <a href="#home" className="flex items-center gap-2.5 font-bold tracking-tight">
-            <span className={`grid h-7 w-7 place-items-center rounded-lg ${siteTheme.activeGradient} font-mono text-sm text-white`}>
+            {/* <span className={`grid h-7 w-7 place-items-center rounded-lg ${siteTheme.activeGradient} font-mono text-sm text-white`}>
               A
-            </span>
-            <span>Aman Arun Hegde</span>
+            </span> */}
+            <span className="font-bold tracking-tight pl-5">Portfolio.dev</span>
           </a>
 
           <nav
