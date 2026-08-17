@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { profile } from "@/lib/data";
+import { profile, siteTheme } from "@/lib/data";
 import { FaGithub, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import Reveal from "./Reveal";
-import { siteTheme } from "@/lib/data";
 
 const contactLinks = [
   { icon: SiGmail, label: profile.email, href: `mailto:${profile.email}` },
@@ -62,11 +61,12 @@ export default function Contact() {
         <div className="grid items-center gap-14 md:grid-cols-2">
           <Reveal>
             <div>
-              <span className="mb-3.5 inline-block font-mono text-sm uppercase tracking-[0.08em] text-accent">
-                Contact
+              <span className="mb-5 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-accent">
+                <span className="text-faint">( 06 )</span>
+                <span>Contact</span>
               </span>
-              <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight md:text-5xl">
-                Let's
+              <h2 className="text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl">
+                Let&apos;s
                 <span className={siteTheme.textGradient}> Connect </span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-muted">

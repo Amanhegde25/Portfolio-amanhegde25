@@ -6,9 +6,10 @@ type RevealProps = {
   children: ReactNode;
   className?: string;
   as?: "div" | "li" | "article";
+  delay?: number;
 };
 
-export default function Reveal({ children, className = "", as: Tag = "div" }: RevealProps) {
+export default function Reveal({ children, className = "", as: Tag = "div", delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,7 +20,11 @@ export default function Reveal({ children, className = "", as: Tag = "div" }: Re
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            if (delay) {
+              setTimeout(() => entry.target.classList.add("is-visible"), delay);
+            } else {
+              entry.target.classList.add("is-visible");
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -29,7 +34,7 @@ export default function Reveal({ children, className = "", as: Tag = "div" }: Re
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [delay]);
 
   return (
     <Tag ref={ref as never} className={`reveal ${className}`}>

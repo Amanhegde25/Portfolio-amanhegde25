@@ -76,6 +76,25 @@ body {
     transform: none;
     transition: none;
   }
+
+  .page-enter,
+  .page-enter > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .marquee {
+    animation: none;
+  }
+
+  .blob {
+    animation: none;
+  }
+
+  .hero-hexagon-glow {
+    animation: none;
+  }
 }
 
 /* ---------- Hero background ---------- */
@@ -136,6 +155,83 @@ body {
 
 .fade-up {
   animation: fade-up 0.35s ease;
+}
+
+/* ---------- Page / section entrance transition ---------- */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Stagger helper for children inside a page-enter container */
+.page-enter > * {
+  opacity: 0;
+  animation: page-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ---------- Marquee band ---------- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ---------- Animated link underline ---------- */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1.5px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- Giant faint display number ---------- */
+.display-num {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(159, 158, 187, 0.22);
 }
 
 /* ---------- Hero hexagonal photo ---------- */

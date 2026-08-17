@@ -12,11 +12,12 @@ export default function About() {
     <section id="about" className="section-pad bg-background-soft">
       <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
-          <div className="mb-14 max-w-2xl">
-            <span className="mb-3.5 inline-block font-mono text-sm uppercase tracking-[0.08em] text-accent">
-              About Me
+          <div className="mb-14 max-w-3xl">
+            <span className="mb-5 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-accent">
+              <span className="text-faint">( 01 )</span>
+              <span>About Me</span>
             </span>
-            <h2 className="text-3xl font-extrabold leading-tight tracking-tight md:text-4xl">
+            <h2 className="text-4xl font-extrabold leading-[1.02] tracking-tight md:text-6xl">
               My approach to work is{" "}
               <span className={siteTheme.textGradient}>logic, consistency, and rationality</span>
             </h2>
@@ -24,14 +25,14 @@ export default function About() {
         </Reveal>
 
         <div className="grid items-start gap-10 md:grid-cols-[340px_1fr]">
-          <Reveal>
+          <Reveal delay={120}>
             <div className="rounded-2xl border border-borderline bg-card p-9 text-center shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
               <div className="mb-4 inline-grid place-items-center">
                 <svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true">
                   <defs>
                     <linearGradient id="avatar-grad" x1="0" y1="0" x2="72" y2="72">
-                      <stop stopColor="#6366f1" />
-                      <stop offset="1" stopColor="#d946ef" />
+                      <stop stopColor="#3b82f6" />
+                      <stop offset="1" stopColor="#2563eb" />
                     </linearGradient>
                   </defs>
                   <rect width="72" height="72" rx="18" fill="url(#avatar-grad)" />
@@ -51,7 +52,7 @@ export default function About() {
                     href={s.href}
                     target={s.href.startsWith("http") ? "_blank" : undefined}
                     rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="rounded-full border border-borderline px-4 py-2 text-xs text-muted transition hover:border-accent hover:text-accent"
+                    className="link-underline rounded-full border border-borderline px-4 py-2 text-xs text-muted transition hover:border-accent hover:text-accent"
                   >
                     {s.label}
                   </a>
@@ -61,23 +62,25 @@ export default function About() {
           </Reveal>
 
           <div>
-            <Reveal>
-              <p className="text-base leading-relaxed text-muted max-w-[36ch] md:max-w-none">
+            <Reveal delay={240}>
+              <p className="text-lg leading-relaxed text-muted md:text-xl">
                 Full Stack Developer focused on building practical, scalable solutions. Currently exploring{" "}
                 <strong className="font-semibold text-foreground">AI agents and automation</strong> — from offline LLM
-                pipelines to face-recognition systems. I design in Figma, build with React & Node, and ship products
+                pipelines to face-recognition systems. I design in Figma, build with React &amp; Node, and ship products
                 people actually use.
               </p>
             </Reveal>
 
-            <ul className="mt-7 grid grid-cols-2 gap-3.5">
+            <ul className="mt-9 grid grid-cols-2 gap-3.5">
               {aboutFacts.map((fact, i) => (
-                <Reveal as="li" key={fact.label} className={i >= 2 ? "col-span-1" : ""}>
-                  <div className="rounded-xl border border-borderline bg-card px-4 py-4">
-                    <span className="mb-1 block text-xs uppercase tracking-[0.06em] text-muted">
+                <Reveal as="li" key={fact.label} delay={320 + i * 100}>
+                  <div className="group rounded-xl border border-borderline bg-card px-5 py-5 transition-colors duration-300 hover:border-accent/40">
+                    <span className="mb-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
                       {fact.label}
                     </span>
-                    <span className="text-sm font-semibold">{fact.value}</span>
+                    <span className="text-base font-bold tracking-tight transition-colors duration-300 group-hover:text-accent">
+                      {fact.value}
+                    </span>
                   </div>
                 </Reveal>
               ))}

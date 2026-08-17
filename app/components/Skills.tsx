@@ -123,23 +123,27 @@ export default function Skills() {
           <div className="lg:w-[32%] lg:min-w-0 flex flex-col gap-12">
             <div>
               <Reveal>
-                <h3 className="text-3xl md:text-[40px] font-bold tracking-tight mb-8">My Skills</h3>
+                <span className="mb-4 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-accent">
+                  <span className="text-faint">( 02 )</span>
+                  <span>Skills</span>
+                </span>
+                <h3 className="text-4xl font-extrabold leading-[1.02] tracking-tight md:text-6xl">My Skills</h3>
               </Reveal>
-              <Reveal>
-                <h4 className="text-xl md:text-2xl font-bold tracking-tight mb-2">I build things for the people</h4>
-                <p className="text-lg italic text-muted-foreground font-serif">I can Design, Develop, Deploy</p>
+              <Reveal delay={120}>
+                <h4 className="mt-6 text-xl md:text-2xl font-bold tracking-tight">I build things for the people</h4>
+                <p className="mt-1 text-lg italic text-muted">I can Design, Develop, Deploy</p>
               </Reveal>
             </div>
           </div>
           
-          <div className="lg:flex-1 lg:min-w-0 flex flex-col gap-10">
+          <div className="lg:flex-1 lg:min-w-0 flex flex-col gap-4">
             <Reveal>
-              <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium">
+              <p className="text-muted leading-relaxed text-sm md:text-[15px] font-medium">
                 My go-to stack is Next.js + TypeScript + Tailwind, built on a strong MERN foundation, with React Native for mobile, AWS for deployment and an AI toolkit (LLMs, RAG, LangChain) close at hand.
               </p>
             </Reveal>
             <Reveal>
-              <p className="text-muted-foreground/90 leading-relaxed text-sm md:text-[15px] font-medium mt-[-16px]">
+              <p className="text-muted leading-relaxed text-sm md:text-[15px] font-medium">
                 I design unique UIs in Figma and build them with Tailwind, and I&apos;ve shipped AI projects like an LLM statement parser, an NLP chatbot and a face-recognition attendance system — certified in Oracle Agentic AI &amp; OCI AI Foundations.
               </p>
             </Reveal>
@@ -150,7 +154,7 @@ export default function Skills() {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 mt-6 lg:mt-6">
           <div className="lg:w-[32%] lg:min-w-0">
              <div className="font-bold text-lg flex items-center lg:items-start gap-4 lg:mt-2">
-               Skills <span className="text-muted-foreground/50">→</span>
+               Skills <span className="text-muted/50">→</span>
              </div>
           </div>
           <div className="lg:flex-1 lg:min-w-0">
@@ -183,7 +187,7 @@ export default function Skills() {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 mt-10 lg:mt-10">
           <div className="lg:w-[32%] lg:min-w-0">
              <div className="font-bold text-lg flex items-center lg:items-start gap-4 lg:mt-2">
-               Work Stack <span className="text-muted-foreground/50">→</span>
+               Work Stack <span className="text-muted/50">→</span>
              </div>
           </div>
           <div className="lg:flex-1 lg:min-w-0">
@@ -210,8 +214,8 @@ export default function Skills() {
                        onMouseLeave={() => setHoveredChip(null)}
                        className={`flex items-center gap-2.5 min-w-0 cursor-default transition-all duration-300 ${
                          active === null
-                           ? "text-muted-foreground opacity-70"
-                           : isActive ? "text-foreground opacity-100" : "text-muted-foreground opacity-30 grayscale"
+                            ? "text-muted opacity-70"
+                            : isActive ? "text-foreground opacity-100" : "text-muted opacity-30 grayscale"
                        }`}
                        style={inlineStyle}
                      >

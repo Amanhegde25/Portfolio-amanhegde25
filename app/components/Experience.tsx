@@ -8,49 +8,73 @@ export default function Experience() {
       <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <SectionHeading
-            tag="Work Experience"
+            num="( 04 )"
+            tag="Experience"
             title={
               <>
-                Where I&apos;ve <span className={siteTheme.textGradient}>worked &amp; grown</span>
+                My <span className={siteTheme.textGradient}>journey</span> so far
               </>
             }
+            sub="From hyperautomation bots to an AI chess platform — the roles that shaped how I build."
           />
         </Reveal>
 
-        <div className="relative pl-9">
+        <div className="relative">
+          {/* Timeline line */}
           <div
             aria-hidden="true"
-            className={`absolute bottom-2 left-[9px] top-2 w-0.5 ${siteTheme.timelineGradient}`}
+            className={`absolute bottom-6 left-[7px] top-2 w-[3px] md:left-[190px] ${siteTheme.timelineGradient}`}
           />
-          <ol className="space-y-8">
-            {experiences.map((job) => (
-              <Reveal as="li" key={job.org + job.role}>
-                <article className="relative rounded-2xl border border-borderline bg-card p-5 md:p-7 shadow-[0_12px_28px_rgba(0,0,0,0.28)]">
+
+          <ol className="space-y-12 md:space-y-16">
+            {experiences.map((job, i) => (
+              <Reveal as="li" key={job.org + job.role} delay={i * 120}>
+                <div className="group relative md:grid md:grid-cols-[190px_1fr] md:gap-12">
+                  {/* Desktop dot */}
                   <span
                     aria-hidden="true"
-                    className="absolute -left-9 top-6 h-5 w-5 rounded-full border-[3px] border-accent bg-background shadow-[0_0_0_6px_rgba(129,140,248,0.15)]"
+                    className="absolute left-[190px] top-1.5 hidden h-4 w-4 -translate-x-1/2 rounded-full border-[3px] border-accent bg-background transition-transform duration-300 group-hover:scale-125 md:block"
                   />
-                  <div className="mb-3.5">
-                    <h3 className="text-lg font-bold tracking-tight">{job.role}</h3>
-                    <p className="text-[15px] font-semibold text-accent">{job.org}</p>
-                    <p className="mt-0.5 font-mono text-sm text-faint">{job.date}</p>
+                  {/* Mobile dot */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[7px] top-1.5 h-4 w-4 -translate-x-1/2 rounded-full border-[3px] border-accent bg-background md:hidden"
+                  />
+
+                  {/* Date (desktop) */}
+                  <div className="hidden md:block md:pr-6 md:text-right">
+                    <span className="font-mono text-sm uppercase tracking-[0.14em] text-faint">{job.date}</span>
                   </div>
-                  <ul className="grid list-disc gap-2 pl-5 text-[15px] text-muted">
-                    {job.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {job.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-lg border border-accent/25 bg-accent/[0.12] px-2.5 py-1 text-xs text-indigo-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </article>
+
+                  <article className="pl-8 md:pl-0">
+                    <p className="mb-2 font-mono text-sm uppercase tracking-[0.14em] text-faint md:hidden">
+                      {job.date}
+                    </p>
+                    <h3 className="text-2xl font-extrabold tracking-tight transition-colors duration-300 group-hover:text-accent md:text-4xl">
+                      {job.role}
+                    </h3>
+                    <p className="mt-1.5 font-mono text-sm text-accent/80">
+                      <span className="text-faint">@</span> {job.org}
+                    </p>
+
+                    <ul className="mt-4 grid list-disc gap-2 pl-5 text-[15px] leading-relaxed text-muted">
+                      {job.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {job.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-md border border-accent/20 bg-accent/[0.08] px-2.5 py-1 font-mono text-xs text-blue-200"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                </div>
               </Reveal>
             ))}
           </ol>
