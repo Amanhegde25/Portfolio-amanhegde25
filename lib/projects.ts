@@ -31,37 +31,36 @@ export const projects: Project[] = [
   },
   {
     title: "TheraMind",
-    emoji: "🧠",
     tags: "Python · NLP · Transformers",
     description:
       "AI chatbot for mental health support using NLP and sentiment analysis, with emotional classification (stress, anxiety, etc.) powered by Hugging Face Transformers and spaCy.",
     stack: ["Python", "Pandas", "NumPy", "NLTK", "spaCy", "Hugging Face", "Next.js"],
     link: "https://github.com/Amanhegde25/TheraMind",
+    thumbnail: "/project-media/meeting-notes-ai.png",
     linkLabel: "GitHub ↗",
   },
   {
     title: "IDENTI-SCAN",
-    emoji: "👁️",
     tags: "Python · OpenCV · Haar Cascades",
     description:
       "Automated attendance system using real-time facial recognition. Captures and matches facial features via Haar cascade classifiers to verify identity and mark attendance automatically.",
     stack: ["Python", "OpenCV", "Haar Cascades", "NumPy", "Pandas"],
     link: "https://github.com/Amanhegde25/IDENTI-SCAN",
+    thumbnail: "/project-media/meeting-notes-ai.png",
     linkLabel: "GitHub ↗",
   },
   {
     title: "PDF Manager",
-    emoji: "🗂️",
     tags: "Python · Flask · PDF",
     description:
       "Sleek Flask web app to merge, reorder, preview and password-protect documents — with drag & drop uploads, Word/Image-to-PDF conversion, AES encryption and no data stored after download.",
     stack: ["Python", "Flask", "AES encryption", "JavaScript"],
     link: "https://github.com/Amanhegde25/Pdf-Manager",
+    thumbnail: "/project-media/meeting-notes-ai.png",
     linkLabel: "GitHub ↗",
   },
   {
     title: "Statement Parser",
-    emoji: "📄",
     tags: "Python · Flask · Ollama · LLMs",
     description:
       "AI-powered financial statement parser that extracts structured transaction data from credit card statement PDFs using local LLMs (Llama 3.2) — an offline, privacy-preserving pipeline with no cloud APIs.",
@@ -71,7 +70,6 @@ export const projects: Project[] = [
   },
   {
     title: "PhotoGallery",
-    emoji: "🖼️",
     tags: "Python · Flask · Auth",
     description:
       "Photo gallery web app built with Flask — authenticated users can upload, browse and edit images through a clean template-driven interface.",
@@ -81,7 +79,6 @@ export const projects: Project[] = [
   },
   {
     title: "Student Exam Performance Predictor",
-    emoji: "📊",
     tags: "Python · ML · Flask",
     description:
       "End-to-end machine learning project predicting student exam performance — complete pipeline with EDA, training and evaluation, served through a Flask web interface.",
@@ -91,7 +88,6 @@ export const projects: Project[] = [
   },
   {
     title: "Cricket Data Analysis",
-    emoji: "🏏",
     tags: "Python · pandas · ETL",
     description:
       "Processed raw T20 World Cup cricket data into clean dimensional and fact tables — batting summaries, bowling summaries, match results and player info (JSON → CSV ETL).",
@@ -101,7 +97,6 @@ export const projects: Project[] = [
   },
   {
     title: "Message App",
-    emoji: "💬",
     tags: "Laravel · PHP · Realtime",
     description:
       "A WhatsApp-style messaging application built with Laravel — conversations, contacts and realtime chat in a clean PHP ecosystem.",

@@ -36,45 +36,47 @@ export default function Projects() {
               <button
                 type="button"
                 onClick={() => setSelectedProject(project)}
-                className="group grid w-full cursor-pointer grid-cols-[44px_1fr_auto] items-center gap-4 border-b border-borderline py-6 text-left transition-colors duration-300 hover:bg-white/[0.02] md:grid-cols-[64px_1fr_180px] md:gap-8 md:py-8"
+                className="group grid w-full cursor-pointer grid-cols-[44px_1fr_auto] items-start gap-4 border-b border-borderline py-6 text-left transition-colors duration-300 hover:bg-white/[0.02] md:grid-cols-[64px_1fr_80px] md:gap-8 md:py-8"
               >
                 {/* Number */}
                 <span
-                  className={`font-mono text-sm tabular-nums transition-colors duration-300 ${
+                  className={`font-mono text-sm tabular-nums transition-colors duration-300 pt-1 ${
                     i < 9 ? "text-faint" : "text-faint/60"
                   } group-hover:text-accent`}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
-                {/* Title + meta */}
-                <span className="min-w-0">
+                {/* Title + Meta + Accordion Thumbnail */}
+                <span className="min-w-0 flex flex-col">
                   <span className="block truncate text-xl font-extrabold tracking-tight transition-colors duration-300 group-hover:text-accent md:text-3xl">
                     {project.title}
                   </span>
                   <span className="mt-1.5 block font-mono text-xs uppercase tracking-[0.1em] text-faint">
                     {project.tags}
                   </span>
+
+                  {/* Expanding Accordion Thumbnail */}
+                  {project.thumbnail && (
+                    <div className="grid grid-rows-[0fr] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grid-rows-[1fr]">
+                      <div className="overflow-hidden">
+                        <div className="mt-6 aspect-video w-full md:w-[65%] rounded-xl border border-white/10 bg-card overflow-hidden shadow-2xl">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={project.thumbnail}
+                            alt=""
+                            className="h-full w-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </span>
 
-                {/* Thumbnail / arrow */}
-                <span className="flex items-center justify-end gap-4">
-                  {project.thumbnail ? (
-                    <span className="hidden h-16 w-28 overflow-hidden rounded-lg border border-borderline bg-card md:block">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={project.thumbnail}
-                        alt=""
-                        className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                      />
-                    </span>
-                  ) : (
-                    <span className="hidden text-3xl transition-transform duration-500 group-hover:scale-125 md:block">
-                      {project.emoji}
-                    </span>
-                  )}
+                {/* Arrow */}
+                <span className="flex items-center justify-end">
                   <span
-                    className={`grid h-10 w-10 shrink-0 place-items-center rounded-full border border-borderline text-muted transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white ${
+                    className={`grid h-10 w-10 shrink-0 place-items-center rounded-full border border-borderline text-muted transition-all duration-300 group-hover:-rotate-45 group-hover:border-accent group-hover:bg-accent group-hover:text-white ${
                       selectedProject === project ? "bg-accent text-white" : ""
                     }`}
                   >
