@@ -23,7 +23,7 @@ export const projects: Project[] = [
     linkLabel: "GitHub ↗",
     thumbnail: "/project-media/meeting-notes-ai.png",
     media: [
-      { type: "image", url: "/project-media/meeting-notes-ai.png" },
+      // { type: "image", url: "/project-media/meeting-notes-ai.png" },
       { type: "image", url: "https://placehold.co/600x400/1e1e2e/a78bfa?text=Image+2" },
       { type: "video", url: "https://www.w3schools.com/html/mov_bbb.mp4" }
     ],
@@ -36,6 +36,11 @@ export const projects: Project[] = [
       "AI chatbot for mental health support using NLP and sentiment analysis, with emotional classification (stress, anxiety, etc.) powered by Hugging Face Transformers and spaCy.",
     stack: ["Python", "Pandas", "NumPy", "NLTK", "spaCy", "Hugging Face", "Next.js"],
     link: "https://github.com/Amanhegde25/TheraMind",
+    media: [
+      // { type: "image", url: "/project-media/meeting-notes-ai.png" },
+      { type: "image", url: "https://placehold.co/600x400/1e1e2e/a78bfa?text=Image+2" },
+      { type: "video", url: "https://www.w3schools.com/html/mov_bbb.mp4" }
+    ],
     thumbnail: "/project-media/meeting-notes-ai.png",
     linkLabel: "GitHub ↗",
   },
